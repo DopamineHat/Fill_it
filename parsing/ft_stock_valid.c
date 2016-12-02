@@ -6,11 +6,11 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:53:11 by rolemass          #+#    #+#             */
-/*   Updated: 2016/12/01 19:59:47 by rolemass         ###   ########.fr       */
+/*   Updated: 2016/12/02 18:42:34 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fill_it.h"
 
 t_dlist	*ft_stock_valid(t_dlist *head);
 {
