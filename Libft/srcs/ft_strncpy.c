@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stock_valid.c                                   :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/01 19:53:11 by rolemass          #+#    #+#             */
-/*   Updated: 2016/12/02 18:53:32 by rpagot           ###   ########.fr       */
+/*   Created: 2016/11/18 21:50:40 by rpagot            #+#    #+#             */
+/*   Updated: 2016/11/18 21:50:42 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fill_it.h"
+#include "libft.h"
 
-t_dlist	*ft_stock_valid(t_dlist *head);
+char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
-	t_dlist	*list;
-	size_t	i;
+	size_t i;
+	size_t limit;
 
 	i = 0;
-	list = head->next;
-	while (head->content[i])
+	limit = ft_strlen((char*)src);
+	while (i < len)
 	{
-		if (head->content[i] == '#' && ft_check_valid_shape == ERROR)
-			return (ERROR);
-		if (i % 4 == 0)
+		if (i > limit)
+			dst[i] = '\0';
+		else
+			dst[i] = src[i];
+		i++;
 	}
+	return (dst);
 }

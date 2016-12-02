@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stock_valid.c                                   :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/01 19:53:11 by rolemass          #+#    #+#             */
-/*   Updated: 2016/12/02 18:53:32 by rpagot           ###   ########.fr       */
+/*   Created: 2016/11/18 21:34:04 by rpagot            #+#    #+#             */
+/*   Updated: 2016/11/18 21:34:07 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fill_it.h"
+#include "libft.h"
 
-t_dlist	*ft_stock_valid(t_dlist *head);
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
-	t_dlist	*list;
-	size_t	i;
+	t_list *list;
 
-	i = 0;
-	list = head->next;
-	while (head->content[i])
+	if (lst)
 	{
-		if (head->content[i] == '#' && ft_check_valid_shape == ERROR)
-			return (ERROR);
-		if (i % 4 == 0)
+		list = lst;
+		while (list)
+		{
+			f(list);
+			list = list->next;
+		}
 	}
 }

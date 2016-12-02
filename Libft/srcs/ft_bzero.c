@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stock_valid.c                                   :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpagot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/01 19:53:11 by rolemass          #+#    #+#             */
-/*   Updated: 2016/12/02 18:53:32 by rpagot           ###   ########.fr       */
+/*   Created: 2016/11/10 09:04:13 by rpagot            #+#    #+#             */
+/*   Updated: 2016/11/18 21:25:25 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fill_it.h"
+#include <unistd.h>
 
-t_dlist	*ft_stock_valid(t_dlist *head);
+void	ft_bzero(void *s, size_t n)
 {
-	t_dlist	*list;
-	size_t	i;
+	size_t i;
 
 	i = 0;
-	list = head->next;
-	while (head->content[i])
+	while (n > i)
 	{
-		if (head->content[i] == '#' && ft_check_valid_shape == ERROR)
-			return (ERROR);
-		if (i % 4 == 0)
+		((char *)s)[i] = 0;
+		++i;
 	}
 }

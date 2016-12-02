@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stock_valid.c                                   :+:      :+:    :+:   */
+/*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/01 19:53:11 by rolemass          #+#    #+#             */
-/*   Updated: 2016/12/02 18:53:32 by rpagot           ###   ########.fr       */
+/*   Created: 2016/11/18 21:45:47 by rpagot            #+#    #+#             */
+/*   Updated: 2016/11/18 21:45:49 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fill_it.h"
+#include "libft.h"
 
-t_dlist	*ft_stock_valid(t_dlist *head);
+void	ft_strdel(char **as)
 {
-	t_dlist	*list;
-	size_t	i;
-
-	i = 0;
-	list = head->next;
-	while (head->content[i])
+	if (as != NULL)
 	{
-		if (head->content[i] == '#' && ft_check_valid_shape == ERROR)
-			return (ERROR);
-		if (i % 4 == 0)
+		free(*as);
+		*as = NULL;
 	}
 }

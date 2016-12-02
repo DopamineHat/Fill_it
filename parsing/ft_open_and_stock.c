@@ -6,11 +6,11 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2016/12/01 23:43:43 by rolemass         ###   ########.fr       */
+/*   Updated: 2016/12/02 18:52:56 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fill_it.h"
+#include "../fill_it.h"
 
 static int	ft_check_valid_shape(char *buf, size_t i)
 {

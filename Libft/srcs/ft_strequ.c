@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stock_valid.c                                   :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/01 19:53:11 by rolemass          #+#    #+#             */
-/*   Updated: 2016/12/02 18:53:32 by rpagot           ###   ########.fr       */
+/*   Created: 2016/11/18 21:46:43 by rpagot            #+#    #+#             */
+/*   Updated: 2016/11/18 21:46:45 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fill_it.h"
+#include "libft.h"
 
-t_dlist	*ft_stock_valid(t_dlist *head);
+int		ft_strequ(char const *s1, char const *s2)
 {
-	t_dlist	*list;
-	size_t	i;
+	int i;
 
+	if (!(s1) || !(s2))
+		return (0);
 	i = 0;
-	list = head->next;
-	while (head->content[i])
+	while (s1[i] || s2[i])
 	{
-		if (head->content[i] == '#' && ft_check_valid_shape == ERROR)
-			return (ERROR);
-		if (i % 4 == 0)
+		if (s1[i] != s2[i])
+			return (0);
+		++i;
 	}
+	return (1);
 }

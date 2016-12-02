@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stock_valid.c                                   :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/01 19:53:11 by rolemass          #+#    #+#             */
-/*   Updated: 2016/12/02 18:53:32 by rpagot           ###   ########.fr       */
+/*   Created: 2016/11/18 21:51:32 by rpagot            #+#    #+#             */
+/*   Updated: 2016/11/18 21:51:43 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fill_it.h"
+#include "libft.h"
 
-t_dlist	*ft_stock_valid(t_dlist *head);
+char	*ft_strnew(size_t size)
 {
-	t_dlist	*list;
+	char	*array;
 	size_t	i;
 
 	i = 0;
-	list = head->next;
-	while (head->content[i])
+	if (!(array = (char*)malloc(size + 1 * sizeof(char))))
+		return (NULL);
+	array[size + 1] = '\0';
+	while (i <= size)
 	{
-		if (head->content[i] == '#' && ft_check_valid_shape == ERROR)
-			return (ERROR);
-		if (i % 4 == 0)
+		array[i] = '\0';
+		++i;
 	}
+	return (array);
 }

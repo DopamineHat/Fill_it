@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stock_valid.c                                   :+:      :+:    :+:   */
+/*   ft_swap_universal.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/01 19:53:11 by rolemass          #+#    #+#             */
-/*   Updated: 2016/12/02 18:53:32 by rpagot           ###   ########.fr       */
+/*   Created: 2016/11/20 02:45:20 by rpagot            #+#    #+#             */
+/*   Updated: 2016/11/20 03:51:07 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fill_it.h"
+#include "libft.h"
 
-t_dlist	*ft_stock_valid(t_dlist *head);
+void	ft_swap_universal(void *a, void *b, size_t n)
 {
-	t_dlist	*list;
-	size_t	i;
+	unsigned char tmp;
 
-	i = 0;
-	list = head->next;
-	while (head->content[i])
+	while (n-- > 0 && a && b)
 	{
-		if (head->content[i] == '#' && ft_check_valid_shape == ERROR)
-			return (ERROR);
-		if (i % 4 == 0)
+		tmp = *(unsigned char *)a;
+		*(unsigned char *)a = *(unsigned char *)b;
+		*(unsigned char *)b = tmp;
+		++a;
+		++b;
 	}
 }

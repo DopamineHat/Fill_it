@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stock_valid.c                                   :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/01 19:53:11 by rolemass          #+#    #+#             */
-/*   Updated: 2016/12/02 18:53:32 by rpagot           ###   ########.fr       */
+/*   Created: 2016/11/18 21:33:07 by rpagot            #+#    #+#             */
+/*   Updated: 2016/11/18 21:33:10 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fill_it.h"
+#include "libft.h"
 
-t_dlist	*ft_stock_valid(t_dlist *head);
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	t_dlist	*list;
-	size_t	i;
+	t_list *list;
 
-	i = 0;
-	list = head->next;
-	while (head->content[i])
+	list = *alst;
+	if (!alst || !del)
+		return ;
+	while (list)
 	{
-		if (head->content[i] == '#' && ft_check_valid_shape == ERROR)
-			return (ERROR);
-		if (i % 4 == 0)
+		del(list->content, list->content_size);
+		free(list);
+		list = list->next;
 	}
+	*alst = NULL;
 }

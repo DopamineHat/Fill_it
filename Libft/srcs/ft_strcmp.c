@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stock_valid.c                                   :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/01 19:53:11 by rolemass          #+#    #+#             */
-/*   Updated: 2016/12/02 18:53:32 by rpagot           ###   ########.fr       */
+/*   Created: 2016/11/18 21:44:53 by rpagot            #+#    #+#             */
+/*   Updated: 2016/11/18 21:44:55 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fill_it.h"
+#include "libft.h"
 
-t_dlist	*ft_stock_valid(t_dlist *head);
+int		ft_strcmp(const char *s1, const char *s2)
 {
-	t_dlist	*list;
-	size_t	i;
+	int i;
 
 	i = 0;
-	list = head->next;
-	while (head->content[i])
-	{
-		if (head->content[i] == '#' && ft_check_valid_shape == ERROR)
-			return (ERROR);
-		if (i % 4 == 0)
-	}
+	while (((unsigned char)s1[i] == (unsigned char)s2[i]) &&
+			s1[i] && s2[i++])
+		;
+	return ((unsigned char)s1[i] - (unsigned char)(s2[i]));
 }

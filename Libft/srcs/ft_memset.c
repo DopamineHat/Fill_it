@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stock_valid.c                                   :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/01 19:53:11 by rolemass          #+#    #+#             */
-/*   Updated: 2016/12/02 18:53:32 by rpagot           ###   ########.fr       */
+/*   Created: 2016/11/18 21:37:57 by rpagot            #+#    #+#             */
+/*   Updated: 2016/11/18 21:37:59 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fill_it.h"
+#include "Libft.h"
 
-t_dlist	*ft_stock_valid(t_dlist *head);
+void	*ft_memset(void *b, int c, size_t len)
 {
-	t_dlist	*list;
-	size_t	i;
+	size_t i;
 
 	i = 0;
-	list = head->next;
-	while (head->content[i])
+	while (i < len)
 	{
-		if (head->content[i] == '#' && ft_check_valid_shape == ERROR)
-			return (ERROR);
-		if (i % 4 == 0)
+		((char *)b)[i] = (unsigned char)c;
+		++i;
 	}
+	return (b);
 }

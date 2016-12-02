@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stock_valid.c                                   :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/01 19:53:11 by rolemass          #+#    #+#             */
-/*   Updated: 2016/12/02 18:53:32 by rpagot           ###   ########.fr       */
+/*   Created: 2016/11/18 21:43:49 by rpagot            #+#    #+#             */
+/*   Updated: 2016/11/18 21:43:55 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fill_it.h"
+#include "libft.h"
 
-t_dlist	*ft_stock_valid(t_dlist *head);
+char	*ft_strcat(char *s1, char const *s2)
 {
-	t_dlist	*list;
-	size_t	i;
+	int i;
+	int i2;
 
 	i = 0;
-	list = head->next;
-	while (head->content[i])
+	i2 = 0;
+	while (s1[i])
+		++i;
+	while (s2[i2])
 	{
-		if (head->content[i] == '#' && ft_check_valid_shape == ERROR)
-			return (ERROR);
-		if (i % 4 == 0)
+		s1[i] = s2[i2];
+		++i;
+		++i2;
 	}
+	s1[i] = '\0';
+	return (s1);
 }
