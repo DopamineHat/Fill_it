@@ -6,7 +6,7 @@
 /*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 20:40:54 by rpagot            #+#    #+#             */
-/*   Updated: 2016/12/03 00:20:08 by rpagot           ###   ########.fr       */
+/*   Updated: 2016/12/03 01:10:35 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ unsigned short		check_if_valid(unsigned short tetri)
 	if (tetri == 61440 || tetri == 59392 || tetri == 58368 || tetri == 57856
 			|| tetri == 52224 || tetri == 51328 || tetri == 50240
 			|| tetri == 36352 || tetri == 34952 || tetri == 35968
-			|| tetri == 50688 || tetri == 35904)
+			|| tetri == 50688 || tetri == 35904 || tetri == 35008)
 		return (tetri);
 	else if (tetri == 39936 || tetri == 39040 || tetri == 39168
-			|| tetri == 55296)
+			|| tetri == 55296 || tetri == 35200)
 		return (tetri >> 1);
 	else if (tetri == 47104)
 		return (tetri >> 2);
