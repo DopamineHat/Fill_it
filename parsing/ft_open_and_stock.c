@@ -6,13 +6,13 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2016/12/03 00:22:56 by rolemass         ###   ########.fr       */
+/*   Updated: 2016/12/05 02:51:06 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fill_it.h"
 
-static t_dlist	ft_split_short(unsigned short shape)
+static t_dlist			ft_split_short(unsigned short shape)
 {
 	size_t	i;
 	t_dlist	*new;
@@ -27,19 +27,16 @@ static t_dlist	ft_split_short(unsigned short shape)
 		return (shape);
 }
 
-static unsigned short	ft_convert_buf_to_short(char *buf)
+unsigned short			ft_convert_buf_to_short(char *buf)
 {
 	unsigned short	shape;
-	size_t	i;
+	size_t			i;
 
-	bit = 0;
+	shape = 0;
 	i = 20;
-	while (i >= 0)
-	{
-		if (i == '#')
-			shape += pow(20 - i - (i / 4));
-		i--;
-	}
+	while (i != 0)
+		if (buf[i--] == '#')
+			shape += ft_pow(2, 19 - i);
 	return (shape);
 }
 
@@ -53,7 +50,7 @@ static unsigned short	ft_lst_pars_buf(t_dlist *list, char *buf)
 	{
 		if ((i % 4 == 0 || i % 20 == 0) && buf[i] != '\n')
 			return (ERROR);
-		i++;
+		++i;
 	}
 	binary_shape = ft_convert_buf_to_short(buf);
 	if (ft_check_validity(binary_shape) == -1)
