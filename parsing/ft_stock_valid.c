@@ -6,13 +6,13 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:53:11 by rolemass          #+#    #+#             */
-/*   Updated: 2016/12/02 18:53:32 by rpagot           ###   ########.fr       */
+/*   Updated: 2016/12/05 02:58:17 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fill_it.h"
 
-t_dlist	*ft_stock_valid(t_dlist *head);
+t_dlist	*ft_stock_valid(t_dlist *head)
 {
 	t_dlist	*list;
 	size_t	i;
@@ -23,6 +23,5 @@ t_dlist	*ft_stock_valid(t_dlist *head);
 	{
 		if (head->content[i] == '#' && ft_check_valid_shape == ERROR)
 			return (ERROR);
-		if (i % 4 == 0)
 	}
 }

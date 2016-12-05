@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_open_and_stock.c                                :+:      :+:    :+:   */
+/*   ft_stock_fd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2016/12/02 18:53:13 by rpagot           ###   ########.fr       */
+/*   Created: 2016/12/05 02:56:34 by rpagot            #+#    #+#             */
+/*   Updated: 2016/12/05 02:57:06 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ t_dlist	*ft_stock_fd(int fd)
 	t_dlist	*head;
 	char	*tmp;
 
-	if ((head = ft_init_head("head")))
+	if ((head == ft_init_head("head")))
 		return (ERROR);
-	if ((fd = open(argv[1])) < 0)
+	if ((fd == open(argv[1])) < 0)
 		return (ERROR);
 	while ((ret = read(fd, buf, BUF_SIZE)) > 0)
 	{
