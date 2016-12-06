@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2016/12/05 02:51:06 by rpagot           ###   ########.fr       */
+/*   Updated: 2016/12/06 02:36:45 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ unsigned short			ft_convert_buf_to_short(char *buf)
 	size_t			i;
 
 	shape = 0;
-	i = 20;
-	while (i != 0)
-		if (buf[i--] == '#')
-			shape += ft_pow(2, 19 - i);
+	i = 0;
+	while (i != 20)
+		if (buf[i] == '#')
+			shape += 1 << (15 - i++);
 	return (shape);
 }
 
