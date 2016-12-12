@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2016/12/06 02:36:45 by rpagot           ###   ########.fr       */
+/*   Updated: 2016/12/06 02:46:17 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ unsigned short			ft_convert_buf_to_short(char *buf)
 	return (shape);
 }
 
+
 static unsigned short	ft_lst_pars_buf(t_dlist *list, char *buf)
 {
 	size_t			i;
@@ -53,7 +54,7 @@ static unsigned short	ft_lst_pars_buf(t_dlist *list, char *buf)
 		++i;
 	}
 	binary_shape = ft_convert_buf_to_short(buf);
-	if (ft_check_validity(binary_shape) == -1)
+	if (ft_check_if_valid(binary_shape) == -1)
 		return (ERROR);
 	return (binary_shape);
 }

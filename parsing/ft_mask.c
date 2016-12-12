@@ -6,13 +6,13 @@
 /*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 02:58:38 by rpagot            #+#    #+#             */
-/*   Updated: 2016/12/05 02:58:40 by rpagot           ###   ########.fr       */
+/*   Updated: 2016/12/06 02:46:35 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fill_it.h"
 
-unsigned short		check_if_valid(unsigned short tetri)
+unsigned short		ft_check_if_valid(unsigned short tetri)
 {
 	unsigned short	tmp;
 	int				i;
