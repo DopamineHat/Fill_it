@@ -1,4 +1,3 @@
-
 #include "../fill_it.h"
 
 void	test_binary(void)
@@ -12,9 +11,9 @@ void	test_binary(void)
 	len = 16;
 	shape = 5;
 	test = 2;
-	while
+	// while
 	// list->l1 = (list->l1 | shape);
-	printf("%d\n", (test | shape));
+	// printf("%d\n", (test | shape));
 }
 
 
