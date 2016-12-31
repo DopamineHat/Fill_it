@@ -6,26 +6,11 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2016/12/06 02:46:17 by rpagot           ###   ########.fr       */
+/*   Updated: 2016/12/31 05:24:50 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fill_it.h"
-
-static t_dlist			ft_split_short(unsigned short shape)
-{
-	size_t	i;
-	t_dlist	*new;
-
-	i = 0;
-	new = ft_init
-	// while (i < 4)
-	// {
-		new->l1 = shape | new->l1;
-		// i++;
-	// }
-		return (shape);
-}
 
 unsigned short			ft_convert_buf_to_short(char *buf)
 {
@@ -50,12 +35,12 @@ static unsigned short	ft_lst_pars_buf(t_dlist *list, char *buf)
 	while (buf[i])
 	{
 		if ((i % 4 == 0 || i % 20 == 0) && buf[i] != '\n')
-			return (ERROR);
+			return (0);
 		++i;
 	}
 	binary_shape = ft_convert_buf_to_short(buf);
 	if (ft_check_if_valid(binary_shape) == -1)
-		return (ERROR);
+		return (0);
 	return (binary_shape);
 }
 
@@ -70,7 +55,7 @@ t_dlist		*ft_stock_fd(int fd, t_dlist *head)
 	{
 		head->content = ft_lst_pars_buf(lst, buf);
 		if (head->content == NULL)
-			return (ERROR);
+			return (0);
 		list = head->prev;
 	}
 	free(tmp);

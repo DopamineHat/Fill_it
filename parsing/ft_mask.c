@@ -6,7 +6,7 @@
 /*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 02:58:38 by rpagot            #+#    #+#             */
-/*   Updated: 2016/12/06 02:46:35 by rpagot           ###   ########.fr       */
+/*   Updated: 2016/12/31 06:15:07 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,16 @@ unsigned short		ft_check_if_valid(unsigned short tetri)
 	while (tmp != 0 && ++i)
 		tmp = tmp >> 1;
 	tetri = tetri << (16 - i);
-	if (tetri == 61440 || tetri == 59392 || tetri == 58368 || tetri == 57856
-			|| tetri == 52224 || tetri == 51328 || tetri == 50240
-			|| tetri == 36352 || tetri == 34952 || tetri == 35968
-			|| tetri == 50688 || tetri == 35904 || tetri == 35008)
+	if (tetri == 0xF000 || tetri == 0xE800 || tetri == 0xE400
+			|| tetri == 0xE200 || tetri == 0xCC00 || tetri == 0xC880
+			|| tetri == 0xC440 || tetri == 0x8E00 || tetri == 0x8888
+			|| tetri == 0x8C80 || tetri == 0xC600 || tetri == 0x8C40
+			|| tetri == 0x88C0)
 		return (tetri);
-	else if (tetri == 39936 || tetri == 39040 || tetri == 39168
-			|| tetri == 55296 || tetri == 35200)
+	else if (tetri == 0x9C00 || tetri == 0x9880 || tetri == 0x9900
+			|| tetri == 0xD800 || tetri == 0x8980)
 		return (tetri >> 1);
-	else if (tetri == 47104)
+	else if (tetri == 0xB800)
 		return (tetri >> 2);
 	return (0);
 }
