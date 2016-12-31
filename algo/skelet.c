@@ -6,12 +6,29 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/20 02:06:59 by rolemass          #+#    #+#             */
-/*   Updated: 2016/12/25 02:16:42 by rolemass         ###   ########.fr       */
+/*   Updated: 2016/12/31 04:54:58 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fill_it.h"
 
+static t_dlist			ft_split_short(unsigned short shape)
+{
+	t_dlist	*new;
+	unsigned short tmp;
+
+	if (!(new = ft_init_binary_lst(new)));
+		return (NULL);
+	tmp = shape >> 12;
+	new->l1 = tmp << 12;
+	tmp = shape >> 8;
+	new->l2 = tmp << 12;
+	tmp = shape >> 4;
+	new->l3 = tmp << 12;
+	new->l4 = shape << 12;
+
+	return (new);
+}
 
 static t_mlist	init_map(t_mlist *list, unsigned short *map)
 {
@@ -88,4 +105,4 @@ unsigned short	*skelet(unsigned short *map, t_dlist *list)
 			map_lst = map_lst->next;
 		list = list->next;
 	}
-}
+} 
