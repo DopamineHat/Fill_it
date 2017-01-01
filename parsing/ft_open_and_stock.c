@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2016/12/31 05:24:50 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/01/01 09:17:37 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ unsigned short			ft_convert_buf_to_short(char *buf)
 
 static unsigned short	ft_lst_pars_buf(t_dlist *list, char *buf)
 {
-	size_t			i;
-	unsigned short	binary_shape;
+	size_t					i;
+	static unsigned short	tetri;
+	static int				area;
 
 	i = 0;
 	while (buf[i])
@@ -38,10 +39,9 @@ static unsigned short	ft_lst_pars_buf(t_dlist *list, char *buf)
 			return (0);
 		++i;
 	}
-	binary_shape = ft_convert_buf_to_short(buf);
-	if (ft_check_if_valid(binary_shape) == -1)
-		return (0);
-	return (binary_shape);
+	tetri = ft_convert_buf_to_short(buf);
+	ft_check_if_valid(tetri, area);
+	return (tetri);
 }
 
 t_dlist		*ft_stock_fd(int fd, t_dlist *head)
