@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/20 02:06:59 by rolemass          #+#    #+#             */
-/*   Updated: 2016/12/31 05:16:58 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/01/01 09:57:47 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static t_dlist			*ft_split_short(unsigned short shape)
 	t_dlist	*new;
 	unsigned short tmp;
 
-	if (!(new = ft_init_binary_lst(new)));
+	if (!(new = ft_init_binary_lst(new)))
 		return (NULL);
 	tmp = shape >> 12;
 	new->l1 = tmp << 12;

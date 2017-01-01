@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:53:11 by rolemass          #+#    #+#             */
-/*   Updated: 2016/12/05 02:58:17 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/01/01 09:25:26 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_dlist	*ft_stock_valid(t_dlist *head)
 	list = head->next;
 	while (head->content[i])
 	{
-		if (head->content[i] == '#' && ft_check_valid_shape == ERROR)
-			return (ERROR);
+		if (head->content[i] == '#' && ft_check_if_valid == 0)
+			return (0);
 	}
 }
