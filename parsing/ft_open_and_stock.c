@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2017/01/01 09:17:37 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/02/23 18:13:47 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static unsigned short	ft_lst_pars_buf(t_dlist *list, char *buf)
 	static int				area;
 
 	i = 0;
+	tetri = (unsigned short)malloc(sizeof(unsigned short));
 	while (buf[i])
 	{
 		if ((i % 4 == 0 || i % 20 == 0) && buf[i] != '\n')
@@ -40,24 +41,30 @@ static unsigned short	ft_lst_pars_buf(t_dlist *list, char *buf)
 		++i;
 	}
 	tetri = ft_convert_buf_to_short(buf);
-	ft_check_if_valid(tetri, area);
+	if ((ft_check_if_valid(tetri, area)) == 0)
+	{
+		free((void*)&tetri);
+		return (0);
+	}
 	return (tetri);
 }
 
 t_dlist		*ft_stock_fd(int fd, t_dlist *head)
 {
-	int		ret;
-	char	*buf;
+	int				ret;
+	char			*buf;
+	unsigned short	tetri;
 	t_dlist	*list;
 	
 	list = head->next;
 	while ((ret = read(fd, buf, BUF_SIZE)) > 0)
 	{
-		head->content = ft_lst_pars_buf(lst, buf);
-		if (head->content == NULL)
-			return (0);
-		list = head->prev;
+		if ((tetri = ft_lst_pars_buf(list, buf)) == 0)
+			return (NULL);
+		list = ft_format_unsigned_short(list, tetri);
+		list = head->next;
 	}
-	free(tmp);
+	if (ret == -1)
+		return (NULL);
 	return (head);
 }

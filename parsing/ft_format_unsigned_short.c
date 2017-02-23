@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stock_valid.c                                   :+:      :+:    :+:   */
+/*   ft_format_unsigned_short.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/01 19:53:11 by rolemass          #+#    #+#             */
-/*   Updated: 2017/01/01 09:25:26 by rpagot           ###   ########.fr       */
+/*   Created: 2017/02/23 17:40:59 by rolemass          #+#    #+#             */
+/*   Updated: 2017/02/23 18:25:40 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fill_it.h"
-
-t_dlist	*ft_stock_valid(t_dlist *head)
+t_dlist	*ft_format_unsigned_short(t_dlist *list, unsigned short tetri)
 {
-	t_dlist	*list;
-	size_t	i;
-
-	i = 0;
-	list = head->next;
-	while (head->content[i])
-	{
-		if (head->content[i] == '#' && ft_check_if_valid == 0)
-			return (0);
-	}
+	list->l1 = tetri >> 12;
+	list->l1 = tetri << 12;
+	list->l2 = tetri >> 8;
+	list->l2 = list->l2 << 12;
+	list->l3 = tetri >> 4;
+	list->l3 = list->l3 << 12;
+	list->l4 = tetri << 12;
+	return (list);
 }

@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/20 02:06:59 by rolemass          #+#    #+#             */
-/*   Updated: 2017/01/01 09:57:47 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/01/02 05:58:59 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ static t_dlist			*ft_split_short(unsigned short shape)
 	return (new);
 }
 
-static t_mlist	init_map(t_mlist *list, unsigned short *map)
+static t_mlist	*init_map(t_mlist *list, unsigned short *map)
 {
 	t_mlist *new;
 
 	if ((new = (m_list*)malloc(sizeof(m_list))) == 0)
-		return (0);
+		return (NULL);
 	if (!(new->content = (unsigned short*)malloc(sizeof(unsigned short *))))
-		return (0);
+		return (NULL);
 	new->content = map;
 	new->next = 0;
 	new->prev = list;
@@ -59,7 +59,7 @@ static t_dlist	*ft_mlist_take_at(t_dlist list, int at)
 
 unsigned short	*test_tri(t_dlist *tetri, t_mlist *map_lst)
 {
-	unsigned short *tmp;
+	unsigned short	*tmp;
 	int				i;
 	int				j;
 
