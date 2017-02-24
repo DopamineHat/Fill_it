@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2017/02/23 18:13:47 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/02/23 18:33:38 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,18 @@ t_dlist		*ft_stock_fd(int fd, t_dlist *head)
 	t_dlist	*list;
 	
 	list = head->next;
+	buf = (char*)malloc(sizeof(char) * 21);
 	while ((ret = read(fd, buf, BUF_SIZE)) > 0)
 	{
 		if ((tetri = ft_lst_pars_buf(list, buf)) == 0)
+		{
+			free(buf);
 			return (NULL);
+		}
 		list = ft_format_unsigned_short(list, tetri);
 		list = head->next;
 	}
+	free(buf);
 	if (ret == -1)
 		return (NULL);
 	return (head);
