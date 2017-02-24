@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 18:42:42 by rpagot            #+#    #+#             */
-/*   Updated: 2017/02/23 18:31:22 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/02/24 22:11:52 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,16 @@ struct	s_dlist
 	struct s_dlist	*next;
 };
 
-typedef struct s_dlist	t_dlist;
+struct	s_mlist
+{
+	unsigned short	*tetripos;
+	unsigned short	*prepos;
+	struct s_mlist	*prev;
+	struct s_mlist	*next;
+};
 
+typedef struct s_dlist	t_dlist;
+typedef struct s_mlist	t_mlist;
 unsigned short		ft_check_if_valid(unsigned short tetri, int area);
 t_dlist				*ft_format_unsigned_short(t_dlist *list, unsigned short tetri);
 
