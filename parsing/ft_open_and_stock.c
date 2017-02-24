@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2017/02/23 18:33:38 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/02/24 20:09:53 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ unsigned short			ft_convert_buf_to_short(char *buf)
 static unsigned short	ft_lst_pars_buf(t_dlist *list, char *buf)
 {
 	size_t					i;
-	static unsigned short	tetri;
-	static int				area;
+	unsigned short	tetri;
+	int				area;
 
 	i = 0;
 	tetri = (unsigned short)malloc(sizeof(unsigned short));
