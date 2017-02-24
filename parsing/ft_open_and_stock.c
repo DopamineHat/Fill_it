@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2017/02/24 21:04:57 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/02/24 22:13:02 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static unsigned short	ft_lst_pars_buf(t_dlist *list, char *buf)
 	tetri = (unsigned short)malloc(sizeof(unsigned short));
 	while (buf[i])
 	{
-		if (i % 4 == 0 && buf[i] != '\n')
+		if ((i + 1) % 5 == 0 && buf[i] != '\n')
 			return (0);
 		++i;
 	}
