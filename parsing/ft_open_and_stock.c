@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2017/02/24 20:09:53 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/02/24 21:04:57 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@ unsigned short			ft_convert_buf_to_short(char *buf)
 	shape = 0;
 	i = 0;
 	while (i != 20)
+	{
 		if (buf[i] == '#')
-			shape += 1 << (15 - i++);
+			shape += (1 << (15 - i));
+		i++;
+	}
 	return (shape);
 }
 
@@ -36,7 +39,7 @@ static unsigned short	ft_lst_pars_buf(t_dlist *list, char *buf)
 	tetri = (unsigned short)malloc(sizeof(unsigned short));
 	while (buf[i])
 	{
-		if ((i % 4 == 0 || i % 20 == 0) && buf[i] != '\n')
+		if (i % 4 == 0 && buf[i] != '\n')
 			return (0);
 		++i;
 	}
