@@ -6,9 +6,11 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/23 17:40:59 by rolemass          #+#    #+#             */
-/*   Updated: 2017/02/24 20:03:59 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/02/24 22:07:52 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../fill_it.h"
 
 t_dlist	*ft_format_unsigned_short(t_dlist *list, unsigned short tetri)
 {
