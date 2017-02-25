@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 18:42:42 by rpagot            #+#    #+#             */
-/*   Updated: 2017/02/24 22:20:32 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/02/25 22:35:14 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include "Libft/includes/libft.h"
 
 # define BUF_SIZE 21
-
 
 struct	s_dlist
 {
@@ -36,8 +35,19 @@ struct	s_mlist
 	struct s_mlist	*next;
 };
 
-typedef struct s_dlist	t_dlist;
-typedef struct s_mlist	t_mlist;
+
+struct s_final_map
+{
+	char	**final_map;
+	char	letter;
+	int		x;
+	int		y;
+};
+
+typedef struct s_dlist		t_dlist;
+typedef struct s_mlist		t_mlist;
+typedef struct s_final_map	t_final_map;
+
 unsigned short	ft_check_if_valid(unsigned short tetri, int area);
 t_dlist			*ft_format_unsigned_short(t_dlist *list, unsigned short tetri);
 
