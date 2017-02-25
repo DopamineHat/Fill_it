@@ -6,7 +6,7 @@
 /*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/24 22:40:04 by rpagot            #+#    #+#             */
-/*   Updated: 2017/02/25 04:17:29 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/02/25 04:52:48 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ unsigned short	*ft_placetetri(unsigned short *prepos, unsigned short tetri)
 	while (x < 256)
 	{
 		tetri = tetri << x;
-		if ((*prepos ^ tetri) == (*prepos | tetri) && (*prepos
+		if ((*prepos & tetri) != 0 && (*prepos
 					>> ((x + 1) % 16) << (15 - ((x + 1) % 16)) == 1))
 			ft_verifytetri()
 		prepos++;
