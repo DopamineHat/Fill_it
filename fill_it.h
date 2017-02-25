@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 18:42:42 by rpagot            #+#    #+#             */
-/*   Updated: 2017/02/26 00:35:52 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/02/26 00:48:27 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ struct s_final_map
 	int		y;
 };
 
-typedef struct s_dlist		t_tetri;
+typedef struct s_tetri		t_tetri;
 // typedef struct s_mlist		t_mlist;
 typedef struct s_final_map	t_final_map;
 
