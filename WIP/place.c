@@ -6,7 +6,7 @@
 /*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/24 22:40:04 by rpagot            #+#    #+#             */
-/*   Updated: 2017/02/26 04:09:48 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/02/26 04:10:44 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ unsigned short	*ft_placetetri(unsigned short *prepos, unsigned short *tetri)
 			tetri++;
 		}
 		if ((*prepos & *tetri) == 0)
-			ft_verifytetri(unsigned short *prepos, x);
+			ft_verifytetri(*prepos, x);
 		prepos++;
 		++x;
 	}
