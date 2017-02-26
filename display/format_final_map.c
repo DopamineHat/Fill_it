@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/25 03:21:26 by rolemass          #+#    #+#             */
-/*   Updated: 2017/02/25 04:55:20 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/02/26 04:48:55 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,28 +36,47 @@ static t_final_map	init_final_map(int size)
 	return (final_map);
 }
 
-char		**ft_format_final_map(t_mlist *head, t_final_map pos, int size)
+void	ft_place_one_final_tetri(t_tetri tetri, t_final_map pos)
 {
-	t_final_map	**pos;
-	int			count;
+	int i;
+	int count;
 
-	if (!(final_map = init_final_map(size)))
-		return (NULL);
-	while (pos.x < size)
+	i = 0;
+	pos.x = tetri.x % 16;
+	pos.y = tetri.x / 16;
+	tetri.l[0] = tetri.l[0] << pos.x;
+	while (i < 4)
 	{
-		head = head->next;
 		count = 0;
-		while (head->tetripos[pos.x] == 0)
-			pos.x++;
-		while ((head->tetripos[pos.x] << 1) > 0 && count++) //verif le nb
+		while ((tetri[i] = (tetri[i] << 1)) > 0 && count < 4)
 		{
-			if (head->tetripos[pos.x] > 225)
+			if (tetri[i] > 225)
 			{
 				pos.final_map[pos.x][pos.y] = pos.letter;
 				count++;
 			}
-			pos.y++;
+			pos.x++;
 		}
+		pos.x = 0;
+		i++;
+		pos.y++;
 	}
-	return (final_map);
+}
+
+
+char	**ft_format_final_map(t_tetri *tab, t_final_map pos, int size)
+{
+	t_final_map	pos;
+	int			i;
+
+	if (!(pos = init_final_map(size)))
+		return (NULL);
+	i = 0;
+	while (pos.y <= size)
+	{
+		ft_place_one_final_tetri(tab[i], pos);
+		pos.letter++;
+		i++;
+	}
+	return (pos.final_map);
 }
