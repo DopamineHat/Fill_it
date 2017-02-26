@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 18:42:42 by rpagot            #+#    #+#             */
-/*   Updated: 2017/02/26 00:48:27 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/02/26 03:52:19 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@
 
 struct	s_tetri
 {
-	unsigned short	l1;
-	unsigned short	l2;
-	unsigned short	l3;
-	unsigned short	l4;
+	unsigned short	*l;
 	int				x;
 };
 
