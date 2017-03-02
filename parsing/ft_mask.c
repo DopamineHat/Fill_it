@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 02:58:38 by rpagot            #+#    #+#             */
-/*   Updated: 2017/02/23 17:35:15 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/03/02 03:02:22 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static unsigned short		ft_check_if_valid2(unsigned short tetri, int area)
 		area += 6;
 		return (tetri >> 2);
 	}
+	ft_putstr("error");
 	return (0);
 }
 

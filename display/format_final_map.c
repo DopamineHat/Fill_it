@@ -6,34 +6,34 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/25 03:21:26 by rolemass          #+#    #+#             */
-/*   Updated: 2017/02/26 04:48:55 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/03/02 03:23:58 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fillit.h"
+#include "../fill_it.h"
 
-static t_final_map	init_final_map(int size)
+static t_final_map	*init_final_map(int size)
 {
-	t_final_map	pos;
+	t_final_map	*pos;
 	int			x;
 	int			y;
 
 	x = 0;
-	pos.x = 0;
-	pos.y = 0;
-	pos.letter = 'A';
-	if (!(pos.final_map = (char**)malloc(sizeof(char*) * size)))
+	pos->x = 0;
+	pos->y = 0;
+	pos->letter = 'A';
+	if (!(pos->final_map = (char**)malloc(sizeof(char*) * size)))
 		return (NULL);
 	while (x < size)
 	{
-		y = 0
-		if (!(pos.final_map[x] = (char*)malloc(sizeof(char) * 16)))
+		y = 0;
+		if (!(pos->final_map[x] = (char*)malloc(sizeof(char) * 16)))
 			return (NULL);
 		while (y < 16)
-			pos.final_map[x][y++] = '.';
+			pos->final_map[x][y++] = '.';
 		x++;
 	}
-	return (final_map);
+	return (pos);
 }
 
 void	ft_place_one_final_tetri(t_tetri tetri, t_final_map pos)
@@ -48,9 +48,9 @@ void	ft_place_one_final_tetri(t_tetri tetri, t_final_map pos)
 	while (i < 4)
 	{
 		count = 0;
-		while ((tetri[i] = (tetri[i] << 1)) > 0 && count < 4)
+		while ((tetri.l[i] = (tetri.l[i] << 1)) > 0 && count < 4)
 		{
-			if (tetri[i] > 225)
+			if (tetri.l[i] > 225)
 			{
 				pos.final_map[pos.x][pos.y] = pos.letter;
 				count++;
@@ -64,19 +64,19 @@ void	ft_place_one_final_tetri(t_tetri tetri, t_final_map pos)
 }
 
 
-char	**ft_format_final_map(t_tetri *tab, t_final_map pos, int size)
+char	**ft_format_final_map(t_tetri *tab, int size)
 {
-	t_final_map	pos;
+	t_final_map	*pos;
 	int			i;
 
 	if (!(pos = init_final_map(size)))
 		return (NULL);
 	i = 0;
-	while (pos.y <= size)
+	while (pos->y <= size)
 	{
-		ft_place_one_final_tetri(tab[i], pos);
-		pos.letter++;
+		ft_place_one_final_tetri(tab[i], *pos);
+		pos->letter++;
 		i++;
 	}
-	return (pos.final_map);
+	return (pos->final_map);
 }

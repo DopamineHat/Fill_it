@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2017/02/26 00:51:15 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/03/02 03:07:36 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,16 @@ t_tetri		*ft_stock_fd(int fd, t_tetri *tetri_tab)
 	char			*buf;
 	unsigned short	tetri;
 
-	buf = (char*)malloc(sizeof(char) * 21);
+	buf = (char*)malloc(sizeof(char) * 22);
 	while ((ret = read(fd, buf, BUF_SIZE)) > 0)
 	{
-		if ((tetri = ft_lst_pars_buf(tetri_tab[i], buf)) == 0)
+		buf[21] = '\0';
+		if ((tetri = ft_lst_pars_buf(buf)) == 0)
 		{
 			free(buf);
 			return (NULL);
 		}
-		tetri_tab[i] = ft_format_unsigned_short(list, tetri);
+		tetri_tab[i] = ft_format_unsigned_short(tetri_tab[i], tetri);
 		i++;
 	}
 	free(buf);
