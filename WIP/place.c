@@ -6,7 +6,7 @@
 /*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/24 22:40:04 by rpagot            #+#    #+#             */
-/*   Updated: 2017/02/26 09:17:11 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/03/02 06:28:26 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ unsigned short	ft_placetetri(unsigned short *prepos, unsigned short *tetri)
 	{
 		if ((*prepos & *tetri) == 0)
 		{
+			ft_testetri(*prepos, *tetri);
 			*prepos = *prepos & *tetri;
 			x = (x / 16) * 16;
 		}
@@ -30,10 +31,7 @@ unsigned short	ft_placetetri(unsigned short *prepos, unsigned short *tetri)
 			++x;
 		}
 		if (x % 16 == 0)
-		{
-			tetri++;
 			prepos++;
-		}
 	}
 }
 
