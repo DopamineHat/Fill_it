@@ -6,11 +6,14 @@
 /*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/24 22:40:04 by rpagot            #+#    #+#             */
-/*   Updated: 2017/03/02 06:28:26 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/03/02 07:49:05 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fill_it.h"
+
+unsigned short **ft_testetri(unsigned short *propos, unsigned short *tetrii)
+{
 
 unsigned short	ft_placetetri(unsigned short *prepos, unsigned short *tetri)
 {
@@ -34,4 +37,7 @@ unsigned short	ft_placetetri(unsigned short *prepos, unsigned short *tetri)
 			prepos++;
 	}
 }
+
+unsigned short **ft_testetri(unsigned short *prepos, unsigned short *tetri)
+{
 
