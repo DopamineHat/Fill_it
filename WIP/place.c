@@ -6,16 +6,35 @@
 /*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/24 22:40:04 by rpagot            #+#    #+#             */
-/*   Updated: 2017/03/02 07:49:05 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/03/03 04:41:53 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fill_it.h"
 
-unsigned short **ft_testetri(unsigned short *propos, unsigned short *tetrii)
+static int	ft_testetri(unsigned short *prepos, unsigned short *tetri, int x)
 {
+	int y;
 
-unsigned short	ft_placetetri(unsigned short *prepos, unsigned short *tetri)
+	y = 0;
+	while(y < 3)
+	{
+		prepos++;
+		tetri++;
+		if ((*prepos & *tetri) != 0)
+			break;
+		*prepos = *prepos & *tetri;
+		++y;
+	}
+	if (y != 3)
+		return (0);
+	return (1);
+}
+
+
+
+
+unsigned short	*ft_placetetri(unsigned short *prepos, unsigned short *tetri)
 {
 	int x;
 
@@ -24,8 +43,9 @@ unsigned short	ft_placetetri(unsigned short *prepos, unsigned short *tetri)
 	{
 		if ((*prepos & *tetri) == 0)
 		{
-			ft_testetri(*prepos, *tetri);
 			*prepos = *prepos & *tetri;
+			if ((ft_testetri(prepos, tetri, x) == 1))
+				return (prepos);
 			x = (x / 16) * 16;
 		}
 		else
@@ -36,8 +56,5 @@ unsigned short	ft_placetetri(unsigned short *prepos, unsigned short *tetri)
 		if (x % 16 == 0)
 			prepos++;
 	}
+	return (0);
 }
-
-unsigned short **ft_testetri(unsigned short *prepos, unsigned short *tetri)
-{
-
