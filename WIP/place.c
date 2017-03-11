@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   place.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/24 22:40:04 by rpagot            #+#    #+#             */
-/*   Updated: 2017/03/03 04:41:53 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/03/11 03:00:11 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	ft_testetri(unsigned short *prepos, unsigned short *tetri, int x)
 		tetri++;
 		if ((*prepos & *tetri) != 0)
 			break;
-		*prepos = *prepos & *tetri;
+		*prepos = *prepos ^ *tetri; // seb : "Presque intelligent" 
 		++y;
 	}
 	if (y != 3)
