@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/25 03:21:26 by rolemass          #+#    #+#             */
-/*   Updated: 2017/03/02 03:23:58 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/03/15 03:53:18 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_place_one_final_tetri(t_tetri tetri, t_final_map pos)
 		count = 0;
 		while ((tetri.l[i] = (tetri.l[i] << 1)) > 0 && count < 4)
 		{
-			if (tetri.l[i] > 225)
+			if (tetri.l[i] > 0x8000)
 			{
 				pos.final_map[pos.x][pos.y] = pos.letter;
 				count++;
@@ -62,7 +62,6 @@ void	ft_place_one_final_tetri(t_tetri tetri, t_final_map pos)
 		pos.y++;
 	}
 }
-
 
 char	**ft_format_final_map(t_tetri *tab, int size)
 {

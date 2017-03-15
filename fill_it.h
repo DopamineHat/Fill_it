@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 18:42:42 by rpagot            #+#    #+#             */
-/*   Updated: 2017/03/02 03:09:18 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/03/15 03:43:09 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,9 @@ typedef struct s_final_map	t_final_map;
 
 unsigned short	ft_check_if_valid(unsigned short tetri, int area);
 t_tetri			ft_format_unsigned_short(t_tetri to_split, unsigned short tetri);
+char			**ft_format_final_map(t_tetri *tab, int size);
+t_tetri			ft_format_unsigned_short(t_tetri to_split, unsigned short tetri);
+t_tetri			*ft_stock_fd(int fd, t_tetri *tetri_tab);
+unsigned short	*ft_placetetri(unsigned short *prepos, unsigned short *tetri);
 
 #endif
