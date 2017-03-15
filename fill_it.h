@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 18:42:42 by rpagot            #+#    #+#             */
-/*   Updated: 2017/03/15 03:43:09 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/03/15 04:38:40 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@
 
 struct	s_tetri
 {
-	unsigned short	*l;
+	unsigned short	*tetri;
 	int				x;
+	unsigned short *map;
 };
 
 // struct	s_mlist
@@ -49,6 +50,6 @@ t_tetri			ft_format_unsigned_short(t_tetri to_split, unsigned short tetri);
 char			**ft_format_final_map(t_tetri *tab, int size);
 t_tetri			ft_format_unsigned_short(t_tetri to_split, unsigned short tetri);
 t_tetri			*ft_stock_fd(int fd, t_tetri *tetri_tab);
-unsigned short	*ft_placetetri(unsigned short *prepos, unsigned short *tetri);
+unsigned short	*ft_placetetri(struct s_tetri t_tetri);
 
 #endif
