@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/24 22:40:04 by rpagot            #+#    #+#             */
-/*   Updated: 2017/03/11 03:00:11 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/03/15 03:58:12 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	ft_testetri(unsigned short *prepos, unsigned short *tetri, int x)
 	y = 0;
 	while(y < 3)
 	{
-		prepos++;
+		(prepos++);
 		tetri++;
 		if ((*prepos & *tetri) != 0)
 			break;
