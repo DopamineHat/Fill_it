@@ -6,24 +6,24 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/24 22:40:04 by rpagot            #+#    #+#             */
-/*   Updated: 2017/03/15 04:38:53 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/03/15 04:44:37 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fill_it.h"
 
-static int	ft_test_tetri(struct s_tetri t_tetri)
+static int	ft_test_tetri(t_tetri tetri)
 {
 	int y;
 
 	y = 0;
 	while(y < 3)
 	{
-		t_tetri.map++;
-		t_tetri.tetri++;
-		if ((*t_tetri.map & *t_tetri.tetri) != 0)
+		tetri.map++;
+		tetri.tetri++;
+		if ((*tetri.map & *tetri.tetri) != 0)
 			break;
-		*t_tetri.map = *t_tetri.map ^ *t_tetri.tetri; // seb : "Presque intelligent" 
+		*tetri.map = *tetri.map ^ *tetri.tetri; // seb : "Presque intelligent" 
 		++y;
 	}
 	if (y != 3)
@@ -34,25 +34,25 @@ static int	ft_test_tetri(struct s_tetri t_tetri)
 
 
 
-unsigned short	*ft_placetetri(struct s_tetri t_tetri)
+unsigned short	*ft_placetetri(t_tetri tetri)
 {
-	t_tetri.x = 0;
-	while (t_tetri.x < 256)
+	tetri.x = 0;
+	while (tetri.x < 256)
 	{
-		if ((*t_tetri.map & *t_tetri.tetri) == 0)
+		if ((*tetri.map & *tetri.tetri) == 0)
 		{
-			*t_tetri.map = *t_tetri.map & *t_tetri.tetri;
-			if ((ft_test_tetri(t_tetri) == 1))
-				return (t_tetri.map);
-			t_tetri.x = (t_tetri.x / 16) * 16;
+			*tetri.map = *tetri.map & *tetri.tetri;
+			if ((ft_test_tetri(tetri) == 1))
+				return (tetri.map);
+			tetri.x = (tetri.x / 16) * 16;
 		}
 		else
 		{
-			*t_tetri.tetri = *t_tetri.tetri >> 1;
-			++t_tetri.x;
+			*tetri.tetri = *tetri.tetri >> 1;
+			++tetri.x;
 		}
-		if (t_tetri.x % 16 == 0)
-			t_tetri.map++;
+		if (tetri.x % 16 == 0)
+			tetri.map++;
 	}
 	return (0);
 }
