@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/24 22:40:04 by rpagot            #+#    #+#             */
-/*   Updated: 2017/03/15 08:31:47 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/03/15 08:39:04 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ static int			ft_test_tetri(t_tetri tetri)
 		tetri.tetri++;
 		if ((*tetri.map & *tetri.tetri) != 0)
 			break;
-		*tetri.map = *tetri.map & *tetri.tetri; // seb : "Presque intelligent" 
-		// ouai sauf qu en fait & et ^ ca revient au meme dans ce cas la bande
-		// de fdps donc je remets comme avant par esprit de contradiction
+		*tetri.map = *tetri.map | *tetri.tetri; // seb : "Presque intelligent" 
 		++y;
 	}
 	if (y != 3)
