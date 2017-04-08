@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/29 09:26:15 by rpagot            #+#    #+#             */
-/*   Updated: 2017/04/08 18:54:25 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/04/08 19:17:44 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int		main(int argc, char **argv)
 		ft_putstr("u wot m8");
 		return (1);
 	}
-	CHECK(TEST);
 	if (ft_read_fd(open(argv[1], O_RDONLY), tetri) == -1)
 	{
 		ft_putstr("error\n");

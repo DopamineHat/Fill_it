@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 02:58:38 by rpagot            #+#    #+#             */
-/*   Updated: 2017/03/29 11:14:08 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/04/08 19:14:46 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 static unsigned short		ft_check_if_valid2(t_tetri tetri)
 {
-  
 	if (*tetri.tetri == 0xCC00)
 	{
-	  CHECK(IF);
 		tetri.area += 4;
 		return (*tetri.tetri);
 	}
@@ -25,18 +23,14 @@ static unsigned short		ft_check_if_valid2(t_tetri tetri)
 			|| *tetri.tetri == 0x9900 || *tetri.tetri == 0xD800
 			|| *tetri.tetri == 0x8980)
 	{
-	  CHECK(ELSE IF);
 		tetri.area += 6;
 		return (*tetri.tetri >> 1);
 	}
 	else if (*tetri.tetri == 0xB800)
 	{
-	  CHECK(ELSE if 2);
 		tetri.area += 6;
 		return (*tetri.tetri >> 2);
 	}
-	CHECK(END ft_check_valid2);
-	ft_putstr("error");
 	return (0);
 }
 
@@ -47,7 +41,6 @@ unsigned short				ft_check_if_valid(t_tetri tetri)
 	i = 0;
 	while (*tetri.tetri != 0 && ++i)
 		*tetri.tetri = *tetri.tetri >> 1;
-	CHECK(EXITED WHILE 1);
 	*tetri.tetri = *tetri.tetri << (16 - i);
 	if (*tetri.tetri == 0xE800 || *tetri.tetri == 0xE400
 			|| *tetri.tetri == 0xE200 || *tetri.tetri == 0xC880
@@ -63,10 +56,5 @@ unsigned short				ft_check_if_valid(t_tetri tetri)
 		tetri.area += 8;
 		return (*tetri.tetri);
 	}
-	CHECK(ENTERING FT_CHECK2);
-	unsigned short ret = ft_check_if_valid2(tetri);
-	ft_putnbr(ret);
-	CHECK(TEST);
-	return (ret);
 	return (ft_check_if_valid2(tetri));
 }
