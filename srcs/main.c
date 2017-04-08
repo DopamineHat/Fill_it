@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/29 09:26:15 by rpagot            #+#    #+#             */
-/*   Updated: 2017/04/08 19:17:44 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/08 21:38:12 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ int		main(int argc, char **argv)
 			&& (tetri.map = (unsigned short *)malloc(16
 			* sizeof(unsigned short)))))
 		exit(EXIT_FAILURE);
-	tetri.tetri = NULL;
-	tetri.tetriception = NULL;
+	// tetri.tetriception = NULL;
 	tetri.x = 0;
 	tetri.map = NULL;
 	tetri.area = 0;

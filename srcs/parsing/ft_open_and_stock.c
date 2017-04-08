@@ -6,24 +6,29 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2017/04/08 19:19:25 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/08 21:43:48 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fill_it.h"
+#include <stdio.h>
 
 static unsigned short	ft_convert_to_short(char *buff)
 {
 	unsigned short	shape;
 	size_t			i;
 
+	// shape = (unsigned short *)malloc(sizeof(unsigned short));
 	shape = 0;
 	i = 0;
+	ft_putstr(buff);
 	while (i != 20)
 	{
+		// printf("coucou\n");
 		if (buff[i] == '#')
-			shape += (1 << (15 - i));
+			shape += (1 << (15 - i + (i / 5)));
 		++i;
+		// printf("%u\n", *shape);
 	}
 	return (shape);
 }
@@ -33,21 +38,22 @@ static unsigned short	ft_check_one(char *buff, t_tetri tetri)
 	size_t			i;
 
 	i = 0;
-	// CHECK(ENTERED WHILE);
+	CHECK(ENTERED WHILE);
 	while (buff[i])
 	{
-	  // CHECK(Entered loop);
+	  CHECK(Entered loop);
 		if ((i + 1) % 5 == 0 && buff[i] != '\n')
 			return (0);
 		++i;
-		// CHECK(end loop);
+		CHECK(end loop);
 	}
-	// CHECK(EXITED);
+	CHECK(EXITED);
 	*tetri.tetri = ft_convert_to_short(buff);
-	// CHECK(EXITED FT_CONVERT_TO_SHORT);
+	printf("%u\n", *tetri.tetri);
+	CHECK(EXITED FT_CONVERT_TO_SHORT);
 	if (ft_check_if_valid(tetri) == 0)
 		return (0);
-	// CHECK(EXITED FT_CHECK_IF_VALID);
+	CHECK(EXITED FT_CHECK_IF_VALID);
 	return (*tetri.tetri);
 }
 
@@ -64,7 +70,7 @@ int						ft_read_fd(int fd, t_tetri tetri)
 		return (-1);
 	while ((ret = read(fd, buff, BUF_SIZE)) > 0)
 	{
-	  // CHECK(TEST);
+	  CHECK(TEST);
 	  
 		if ((*tetri.tetri++ = ft_check_one(buff, tetri)) == 0)
 		{
@@ -74,7 +80,7 @@ int						ft_read_fd(int fd, t_tetri tetri)
 			ft_split_short(tetri);
 			return (-1);
 		}
-		// CHECK(YOU WOT M8);
+		CHECK(YOU WOT M8);
 		++i;
 	}
 	ft_memdel((void **)&buff);
