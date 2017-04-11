@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 02:58:38 by rpagot            #+#    #+#             */
-/*   Updated: 2017/04/08 19:14:46 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/12 00:05:48 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,12 @@ static unsigned short		ft_check_if_valid2(t_tetri tetri)
 unsigned short				ft_check_if_valid(t_tetri tetri)
 {
 	int				i;
+	unsigned short	tmp;
 
 	i = 0;
-	while (*tetri.tetri != 0 && ++i)
-		*tetri.tetri = *tetri.tetri >> 1;
+	tmp = *tetri.tetri;
+	while (tmp != 0 && ++i)
+		tmp = tmp >> 1;
 	*tetri.tetri = *tetri.tetri << (16 - i);
 	if (*tetri.tetri == 0xE800 || *tetri.tetri == 0xE400
 			|| *tetri.tetri == 0xE200 || *tetri.tetri == 0xC880
