@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2017/04/08 21:43:48 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/11 23:03:00 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,14 @@ static unsigned short	ft_convert_to_short(char *buff)
 	unsigned short	shape;
 	size_t			i;
 
-	// shape = (unsigned short *)malloc(sizeof(unsigned short));
 	shape = 0;
 	i = 0;
 	ft_putstr(buff);
 	while (i != 20)
 	{
-		// printf("coucou\n");
 		if (buff[i] == '#')
 			shape += (1 << (15 - i + (i / 5)));
 		++i;
-		// printf("%u\n", *shape);
 	}
 	return (shape);
 }
