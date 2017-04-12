@@ -9,9 +9,9 @@ OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror -g
 
-LIBFT	= ./libft/libft.a
-LIBINC	= -I./libft
-LIBLINK	= -L./libft -lft
+LIBFT	= ./Libft/libft.a
+LIBINC	= -I./Libft
+LIBLINK	= -L./Libft -lft
 
 SRCDIR	= ./srcs/
 INCDIR	= ./includes/
@@ -28,7 +28,7 @@ $(OBJDIR)%.o:$(SRCDIR)%.c
 libft: $(LIBFT)
 
 $(LIBFT):
-	make -C ./libft
+	make -C ./Libft
 
 $(NAME): $(OBJ)
 	$(CC) $(LIBLINK) -o $(NAME) $(OBJ)
