@@ -6,7 +6,7 @@
 /*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/08 16:49:39 by rpagot            #+#    #+#             */
-/*   Updated: 2017/04/08 18:49:19 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/04/12 04:25:54 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@ struct						s_tetri
 {
 	unsigned short	*tetri;
 	unsigned short	*tetriception;
-	int				x;
+	int				*x;
 	unsigned short	*map;
 	int				area;
+	int				i;
 };
 
 struct						s_final_map
@@ -53,5 +54,6 @@ t_tetri						ft_split_short(t_tetri tetri);
 unsigned short				ft_check_if_valid(t_tetri tetri);
 int							ft_read_fd(int fd, t_tetri tetri);
 int							ft_looptetri(t_tetri tetri);
+int							ft_display(t_tetri tetri);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2017/04/11 23:03:00 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/04/12 04:58:56 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,8 @@ static unsigned short	ft_check_one(char *buff, t_tetri tetri)
 int						ft_read_fd(int fd, t_tetri tetri)
 {
 	int				ret;
-	int				i;
 	char			*buff;
 
-	i = 0;
 	if (!(buff = ft_strnew(BUF_SIZE)))
 	  exit(EXIT_FAILURE);
 	if (fd == -1)
@@ -69,17 +67,15 @@ int						ft_read_fd(int fd, t_tetri tetri)
 	{
 	  CHECK(TEST);
 	  
-		if ((*tetri.tetri++ = ft_check_one(buff, tetri)) == 0)
+		if ((*tetri.tetri = ft_check_one(buff, tetri)) == 0)
 		{
-		  // CHECK(TEST);
-
 			ft_memdel((void **)&buff);
-			ft_split_short(tetri);
 			return (-1);
 		}
 		CHECK(YOU WOT M8);
-		++i;
 	}
+	ft_looptetri(tetri);
 	ft_memdel((void **)&buff);
+	ft_display(tetri);
 	return (ret);
 }

@@ -2,7 +2,7 @@ NAME = fillit
 FLAGS = -Wall -Werror -Wextra -g
 INCLUDES = -I ./includes
 SRC = main.c parsing/ft_open_and_stock.c parsing/ft_mask.c \
-algo/place.c algo/ft_split_short.c
+algo/place.c algo/ft_split_short.c display/ft_display.c
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 
