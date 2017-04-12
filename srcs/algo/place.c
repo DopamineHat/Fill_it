@@ -44,7 +44,7 @@ static t_tetri		ft_placetetri(t_tetri tetri)
 		{
 			CHECK(NIQUETAMERELAPUTE);
 			printf("%d\n", *tetri.tetri);
-			*tetri.map = *tetri.map | *tetri.tetri;
+			*tetri.map = *tetri.map & *tetri.tetri;
 			printf("%d\n", *tetri.map);
 			if ((ft_test_tetri(tetri) == 1))
 				return (tetri);
