@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   place.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 23:49:56 by rpagot            #+#    #+#             */
-/*   Updated: 2017/04/12 05:32:43 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/04/13 02:42:38 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,17 @@ static int			ft_test_tetri(t_tetri tetri)
 
 static t_tetri		ft_placetetri(t_tetri tetri)
 {
-	CHECK(NIQUETAMERE);
+	// CHECK(NIQUE_TA_MERE);
 	tetri.tetri+=tetri.i;
 	*tetri.x = 0;
+	printf("this is tetri.sparta :%d\n", tetri.i);
+	// exit(EXIT_FAILURE);
 	while (*tetri.x < 256)
 	{
 		if ((*tetri.map & *tetri.tetri) == 0)
 		{
-			CHECK(NIQUETAMERELAPUTE);
-			printf("%d\n", *tetri.tetri);
-			*tetri.map = *tetri.map & *tetri.tetri;
+			// CHECK(NIQUETAMERELAPUTE);
+			*tetri.map = *tetri.map | *tetri.tetri;
 			printf("%d\n", *tetri.map);
 			if ((ft_test_tetri(tetri) == 1))
 				return (tetri);
@@ -52,7 +53,7 @@ static t_tetri		ft_placetetri(t_tetri tetri)
 		}
 		else
 		{
-			CHECK(XDDDDD);
+			// CHECK(XDDDDD);
 			*tetri.tetri = *tetri.tetri >> 1;
 			++tetri.x;
 		}
@@ -68,8 +69,8 @@ int					ft_looptetri(t_tetri tetri)
 	int n;
 
 	n = 0;
-	CHECK(NIQUETAMERE);
-	while (*tetri.tetri)
+	// CHECK(NIQUETAMERE);
+	while (*tetri.tetri+=tetri.i != 0)
 	{
 		ft_placetetri(tetri);
 		tetri.i++;
