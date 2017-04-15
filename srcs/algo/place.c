@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 23:49:56 by rpagot            #+#    #+#             */
-/*   Updated: 2017/04/13 05:07:54 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/13 06:01:17 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static t_tetri		ft_placetetri(t_tetri tetri)
 	{
 		if ((*tetri.map & *tetri.tetri) == 0)
 		{
-			// CHECK(NIQUETAMERELAPUTE);
+			CHECK(NIQUETAMERELAPUTE);
 			*tetri.map = *tetri.map | *tetri.tetri;
 			if ((ft_test_tetri(tetri) == 1))
 				return (tetri);
