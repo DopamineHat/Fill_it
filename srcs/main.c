@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/29 09:26:15 by rpagot            #+#    #+#             */
-/*   Updated: 2017/04/13 05:52:07 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/04/18 12:06:46 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ int		main(int argc, char **argv)
 {
 	t_tetri tetri;
 
-	if (!(tetri.tetri = (unsigned short *)malloc(32 * sizeof(unsigned short)))
+	ft_init_stuff(&tetri);
+
+		if (!(tetri.tetri = (unsigned short *)malloc(32 * sizeof(unsigned short)))
 			|| !(tetri.tetriception = (unsigned short *)malloc(4
 			* sizeof(unsigned short)))
 			|| !(tetri.map = (unsigned short *)malloc(16
@@ -30,7 +32,7 @@ int		main(int argc, char **argv)
 		ft_putendl_fd("u wot m8", 2);
 		return (1);
 	}
-	if (ft_read_fd(open(argv[1], O_RDONLY), tetri) == -1)
+	if (ft_read_fd(open(argv[1], O_RDONLY), &tetri) == -1)
 	{
 		ft_putendl_fd("error?", 2);
 		return (1);

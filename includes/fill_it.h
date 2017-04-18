@@ -6,7 +6,7 @@
 /*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/08 16:49:39 by rpagot            #+#    #+#             */
-/*   Updated: 2017/04/13 05:43:10 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/04/18 12:05:14 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,11 @@ typedef struct s_tlist		t_tlist;
 typedef struct s_tetri		t_tetri;
 typedef struct s_final_map	t_final_map;
 
-t_tetri						ft_split_short(t_tetri tetri);
-unsigned short				ft_check_if_valid(t_tetri tetri);
-int							ft_read_fd(int fd, t_tetri tetri);
-int							ft_looptetri(t_tetri tetri);
-int							ft_display(t_tetri tetri);
+int							ft_init_stuff(t_tetri *tetri);
+int							ft_split_short(t_tetri *tetri);
+unsigned short				ft_check_if_valid(t_tetri *tetri);
+int							ft_read_fd(int fd, t_tetri *tetri);
+int							ft_looptetri(t_tetri *tetri);
+int							ft_display(t_tetri *tetri);
 
 #endif

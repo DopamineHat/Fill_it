@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2017/04/13 05:55:13 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/04/18 11:49:41 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,15 @@ static unsigned short	ft_check_one(char *buff, t_tetri *tetri)
 	*tetri->tetri = ft_convert_to_short(buff);
 	printf("%u\n", *tetri->tetri);
 	CHECK(EXITED FT_CONVERT_TO_SHORT);
-	if ((*tetri->tetri+=tetri->i = ft_check_if_valid(*tetri)) == 0)
+	if ((*tetri->tetri = ft_check_if_valid(tetri)) == 0)
 		return (0);
-	tetri->i++;
+	printf("tetri->i == %d\n", tetri->i);
+	printf("tetri->tetri == %u\n", *tetri->tetri);
 	CHECK(EXITED FT_CHECK_IF_VALID);
 	return (*tetri->tetri);
 }
 
-int						ft_read_fd(int fd, t_tetri tetri)
+int						ft_read_fd(int fd, t_tetri *tetri)
 {
 	int				ret;
 	char			*buff;
@@ -67,13 +68,17 @@ int						ft_read_fd(int fd, t_tetri tetri)
 	while ((ret = read(fd, buff, BUF_SIZE)) > 0)
 	{
 	  CHECK(TEST);
-	  
-		if ((*tetri.tetri = ft_check_one(buff, &tetri)) == 0)
+	  printf("tetri.i == %d\n", tetri->i);
+		if ((*(tetri->tetri) = ft_check_one(buff, tetri)) == 0)
 		{
 			ft_memdel((void **)&buff);
 			return (-1);
 		}
-		CHECK(YOU WOT M8);
+		printf("NOTICE ME SEMPAI: %d\n", *tetri->tetri);
+		printf("NOTICE ME ALSO: %d\n", *(tetri->tetri-1));
+		tetri->tetri++;
+		tetri->i++;
+		CHECK(END_OF_PARSING);
 	}
 	ft_looptetri(tetri);
 	ft_memdel((void **)&buff);
