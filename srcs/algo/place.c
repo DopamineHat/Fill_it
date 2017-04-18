@@ -6,7 +6,7 @@
 /*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 11:08:43 by rpagot            #+#    #+#             */
-/*   Updated: 2017/04/18 11:59:12 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/04/18 12:49:53 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static int			ft_test_tetri(t_tetri *tetri)
 	int y;
 
 	y = 0;
+	printf("I AM HERE %x", *tetri->tetri);
 	ft_split_short(tetri);
 	while (y < 3)
 	{
@@ -38,23 +39,23 @@ static t_tetri		*ft_placetetri(t_tetri *tetri)
 {
 	printf("this is tetri->sparta :%d\n", *(tetri->tetri));
 	*tetri->x = 0;
-	// exit(EXIT_FAILURE);
 	while (*tetri->x < 256)
 	{
 		if ((tetri->map[0] & *tetri->tetri) == 0)
 		{
 			CHECK(TETRI_MAP_UPDATE);
-			printf("tetrimap: %d\n", tetri->map[0]);
+			printf("tetrimap: %x\n", tetri->map[0]);
 			if ((ft_test_tetri(tetri) == 1))
 				return (tetri);
-			printf("tetrimap: %d\n", tetri->map[0]);
+			printf("tetrimap: %x\n", tetri->map[0]);
 			*tetri->x = (*tetri->x / 16) * 16;
 		}
 		else
 		{
-			// CHECK(XDDDDD);
 			*tetri->tetri = *tetri->tetri >> 1;
-			++tetri->x;
+			(*tetri->x)++;
+			printf("tetri->x: %d\n", *tetri->x);
+			printf("tetri->tetri: %d\n", *tetri->tetri);
 		}
 		if (*tetri->x % 16 == 0)
 			tetri->i++;
