@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2017/04/18 11:49:41 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/04/20 07:19:44 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,10 @@ int						ft_read_fd(int fd, t_tetri *tetri)
 		tetri->i++;
 		CHECK(END_OF_PARSING);
 	}
+	tetri->nb = tetri->i;
+	// tetri->tetri[tetri->i] = 0;
 	ft_looptetri(tetri);
 	ft_memdel((void **)&buff);
-	ft_display(tetri);
+	ft_display_map(tetri);
 	return (ret);
 }

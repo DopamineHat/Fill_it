@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_it.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/08 16:49:39 by rpagot            #+#    #+#             */
-/*   Updated: 2017/04/18 12:38:25 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/04/20 08:58:26 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ struct						s_tetri
 	int				*x;
 	unsigned short	*map;
 	int				area;
+	int				nb;
 	int				i;
+	int				bits_count;
 };
 
 struct						s_final_map
@@ -56,5 +58,8 @@ unsigned short				ft_check_if_valid(t_tetri *tetri);
 int							ft_read_fd(int fd, t_tetri *tetri);
 int							ft_looptetri(t_tetri *tetri);
 int							ft_display(t_tetri *tetri);
+void						ft_display_map(t_tetri *tetri);
+void						ft_print_tetri(unsigned short tetri, int i);
+
 
 #endif

@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split_short.c                                   :+:      :+:    :+:   */
+/*   ft_count_bits.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/29 06:05:37 by rpagot            #+#    #+#             */
-/*   Updated: 2017/04/20 07:44:41 by rolemass         ###   ########.fr       */
+/*   Created: 2017/04/20 06:57:20 by rolemass          #+#    #+#             */
+/*   Updated: 2017/04/20 07:26:31 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/fill_it.h"
-#include <stdio.h>
+#include "../includes/fill_it.h"
 
-int		ft_split_short(t_tetri *tetri)
+void	ft_count_bits(t_tetri *tetri)
 {
-	unsigned short tmp;
+	int	i;
+	unsigned short	tmp;
+	int count;
 
-	tmp = *tetri->tetri >> 12;
-	tetri->tetriception[0] = tmp << 12;
-	tmp = *tetri->tetri >> 8;
-	tetri->tetriception[1] = tmp << 12;
-	tmp = *tetri->tetri >> 4;
-	tetri->tetriception[2] = tmp << 12;
-	tetri->tetriception[3] = *tetri->tetri << 12;
-	return (0);
+	i = 0;
+	while (i < 4)
+	{
+		count = 0;
+		tmp = tetri->tetriception[i];
+		while (tmp > 0)
+		{
+			if (tetri->tetriception & 1)
+				count++;
+			tmp >>= 1;
+		}
+		if (count > tetri->bits_count)
+			tetri->bits_count = count;
+		i++;
+	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_stuff.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 12:02:13 by rpagot            #+#    #+#             */
-/*   Updated: 2017/04/18 12:09:04 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/04/20 07:29:51 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int		ft_init_stuff(t_tetri *tetri)
 		exit(EXIT_FAILURE);
 	tetri->i = 0;
 	tetri->area = 0;
+	tetri->nb = 0;
 	while (++n < 16)
 		tetri->map[n] = 0;
 	return (0);
