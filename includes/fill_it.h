@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/08 16:49:39 by rpagot            #+#    #+#             */
-/*   Updated: 2017/04/20 08:58:26 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/21 07:13:36 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,39 +27,23 @@ struct						s_tetri
 	unsigned short	*tetriception;
 	int				*x;
 	unsigned short	*map;
+	unsigned short	*pos;
 	int				area;
 	int				nb;
 	int				i;
 	int				bits_count;
 };
 
-struct						s_final_map
-{
-	char	**final_map;
-	char	letter;
-	int		x;
-};
-
-struct						s_tlist
-{
-	unsigned short	l1;
-	unsigned short	l2;
-	unsigned short	l3;
-	unsigned short	l4;
-};
-
-typedef struct s_tlist		t_tlist;
 typedef struct s_tetri		t_tetri;
-typedef struct s_final_map	t_final_map;
 
 int							ft_init_stuff(t_tetri *tetri);
-int							ft_split_short(t_tetri *tetri);
+void						ft_split_short(t_tetri *tetri);
 unsigned short				ft_check_if_valid(t_tetri *tetri);
 int							ft_read_fd(int fd, t_tetri *tetri);
 int							ft_looptetri(t_tetri *tetri);
 int							ft_display(t_tetri *tetri);
 void						ft_display_map(t_tetri *tetri);
 void						ft_print_tetri(unsigned short tetri, int i);
-
+void						ft_final_display(t_tetri *tetri);
 
 #endif

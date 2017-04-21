@@ -6,14 +6,14 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/29 06:05:37 by rpagot            #+#    #+#             */
-/*   Updated: 2017/04/20 07:44:41 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/21 02:04:39 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fill_it.h"
 #include <stdio.h>
 
-int		ft_split_short(t_tetri *tetri)
+void	ft_split_short(t_tetri *tetri)
 {
 	unsigned short tmp;
 
@@ -24,5 +24,4 @@ int		ft_split_short(t_tetri *tetri)
 	tmp = *tetri->tetri >> 4;
 	tetri->tetriception[2] = tmp << 12;
 	tetri->tetriception[3] = *tetri->tetri << 12;
-	return (0);
 }

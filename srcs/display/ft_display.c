@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 03:33:47 by rpagot            #+#    #+#             */
-/*   Updated: 2017/04/20 09:12:52 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/21 04:21:09 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ void	ft_print_tetri(unsigned short tetri, int i)
 	if (tetri & 1)
 		bit = 1;
 	tetri >>= 1;
-	if (i + 1 < 16)
+	if (i < 16)
 		ft_print_tetri(tetri, i + 1);
-	if (i % 4 == 0)
+	if (i != 0 && i % 4 == 0)
 		ft_putchar('\n');
 	if (bit == 1)
 		ft_putchar('#');

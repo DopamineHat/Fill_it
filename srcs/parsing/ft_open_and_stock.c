@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2017/04/20 07:19:44 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/21 07:39:46 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,15 @@ static unsigned short	ft_check_one(char *buff, t_tetri *tetri)
 	size_t			i;
 
 	i = 0;
-	CHECK(ENTERED WHILE);
 	while (buff[i])
 	{
-	  CHECK(Entered loop);
 		if ((i + 1) % 5 == 0 && buff[i] != '\n')
 			return (0);
 		++i;
-		CHECK(end loop);
 	}
-	CHECK(EXITED);
 	*tetri->tetri = ft_convert_to_short(buff);
-	printf("%u\n", *tetri->tetri);
-	CHECK(EXITED FT_CONVERT_TO_SHORT);
 	if ((*tetri->tetri = ft_check_if_valid(tetri)) == 0)
 		return (0);
-	printf("tetri->i == %d\n", tetri->i);
-	printf("tetri->tetri == %u\n", *tetri->tetri);
-	CHECK(EXITED FT_CHECK_IF_VALID);
 	return (*tetri->tetri);
 }
 
@@ -61,29 +52,28 @@ int						ft_read_fd(int fd, t_tetri *tetri)
 	int				ret;
 	char			*buff;
 
-	if (!(buff = ft_strnew(BUF_SIZE)))
+	if (!(buff = ft_strnew(BUF_SIZE)) || fd == -1)
 	  exit(EXIT_FAILURE);
-	if (fd == -1)
-		return (-1);
 	while ((ret = read(fd, buff, BUF_SIZE)) > 0)
 	{
-	  CHECK(TEST);
-	  printf("tetri.i == %d\n", tetri->i);
 		if ((*(tetri->tetri) = ft_check_one(buff, tetri)) == 0)
 		{
 			ft_memdel((void **)&buff);
 			return (-1);
 		}
-		printf("NOTICE ME SEMPAI: %d\n", *tetri->tetri);
-		printf("NOTICE ME ALSO: %d\n", *(tetri->tetri-1));
 		tetri->tetri++;
 		tetri->i++;
-		CHECK(END_OF_PARSING);
 	}
 	tetri->nb = tetri->i;
-	// tetri->tetri[tetri->i] = 0;
+	tetri->pos = (unsigned short*)malloc(sizeof(unsigned short) * tetri->nb);
+	if (!tetri->pos)
+		exit(EXIT_FAILURE);
 	ft_looptetri(tetri);
 	ft_memdel((void **)&buff);
 	ft_display_map(tetri);
+	CHECK(FINAL_DISPLAY);
+	ft_final_display(tetri);
+	while (*tetri->pos)
+	printf("area: %d\n", tetri->area);
 	return (ret);
 }

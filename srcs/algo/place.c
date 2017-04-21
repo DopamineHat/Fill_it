@@ -6,35 +6,45 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 11:08:43 by rpagot            #+#    #+#             */
-/*   Updated: 2017/04/20 09:12:25 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/21 07:55:45 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fill_it.h"
 #include <stdio.h>
 
-static int			ft_test_tetri(t_tetri *tetri, int shift)
+static void			shift_tetriception(t_tetri *tetri)
 {
-	int y;
+	tetri->tetriception[0] >>= 1;
+	tetri->tetriception[1] >>= 1;
+	tetri->tetriception[2] >>= 1;
+	tetri->tetriception[3] >>= 1;
+}
 
-	y = tetri->i - 1;
-	// printf("I AM HERE %x", *tetri->tetri);
-	while (++y < (tetri->i + 4))
+static int			ft_test_tetri(t_tetri *tetri)
+{
+	int i;
+	int y;
+	int max;
+
+	i = 1;
+	max = *tetri->x / 16;
+	y = max + 1;
+	while (i < 4)
 	{
-		if (y > 0 && shift > 0)
-			tetri->tetriception[y] = tetri->tetriception[y] >> shift;
-		if ((tetri->map[y] & tetri->tetriception[y]) != 0)
+		if ((tetri->map[y] & tetri->tetriception[i++]) != 0)
 			return (0);
+		y++;
 	}
-	y = tetri->i;
-	while (y < (tetri->i + 4))
+	y = max;
+	i = 0;
+	while (y < max + 4)
 	{
-		CHECK(ENTERED_TEST_TETRI_WHILE);
-		// printf("tetriception :%d\n", tetri->tetriception[y]);
-		tetri->map[y] ^= tetri->tetriception[y]; //wtf?
+		tetri->map[y] ^= tetri->tetriception[i++];
 		++y;
 	}
-	ft_display(tetri);
+	*tetri->pos = *tetri->x;
+	tetri->pos++;
 	return (1);
 }
 
@@ -42,7 +52,6 @@ static t_tetri		*ft_placetetri(t_tetri *tetri)
 {
 	int shift;
 
-	printf("this is tetri->sparta :%d\n", *(tetri->tetri));
 	*tetri->x = 0;
 	while (*tetri->x < 256)
 	{
@@ -50,25 +59,20 @@ static t_tetri		*ft_placetetri(t_tetri *tetri)
 		{
 			ft_split_short(tetri);
 			shift = 0;
-			tetri->i++;
 		}
 		if ((tetri->map[*tetri->x / 16] & tetri->tetriception[0]) == 0)
 		{
-			CHECK(TETRI_MAP_UPDATE);
-			// printf("tetrimap: %x\n", tetri->map[0]);
-			if ((ft_test_tetri(tetri, shift) == 1))
+			if ((ft_test_tetri(tetri) == 1))
 				return (tetri);
-			// printf("tetrimap: %x\n", tetri->map[0]);
+			ft_split_short(tetri);
 		}
-		*tetri->tetri = tetri->tetriception[0] >> 1;
+		// tetri->tetriception[0] = tetri->tetriception[0] >> 1;
+		shift_tetriception(tetri);
+		shift++;
 		if (shift + tetri->bits_count > 16)
 			*tetri->x = (*tetri->x / 16) * 17 - 1;
-		shift++;
-		tetri->i = *tetri->x / 16;
 		(*tetri->x)++;
-		// 	tetri->i++;
 	}
-	printf("tetri->x: %d\n", *tetri->x);
 	return (tetri);
 }
 
@@ -77,32 +81,18 @@ int					ft_looptetri(t_tetri *tetri)
 	int n;
 
 	n = 0;
-	printf("%d\n", tetri->i);
-	// printf("wait%d\n", *(tetri->tetri-=(tetri->i - 1)));
 	tetri->tetri -= (tetri->i);
-	CHECK(ENTER_LOOPTETRI);
-	// printf("tetri->tetri-tetri->i: %d\n", *(tetri->tetri-tetri->i));
-	printf("nb = %d\n", tetri->nb);
 	while (n < tetri->nb)
 	{
-		CHECK(COUCOU);
+		// CHECK(COUCOU);
 		tetri->i = -1;
-		if (n == 2)
+		ft_placetetri(tetri);
+		if (n == 1)
 		{
-			CHECK(TROISTOURDEBOUCLESOMG);
-
-			// exit(1);
-			ft_print_tetri(*tetri->tetri, 1);
-			// ft_display(tetri);
+			// CHECK(TROISTOURDEBOUCLESOMG);
+			// ft_display_map(tetri);
 			// exit(1);
 		}
-		ft_placetetri(tetri);
-		// if (n == 1)
-		// {
-		// 	CHECK(TOTO);
-		// 	// ft_display_map(tetri);
-		// 	// exit(1);
-		// }
 		tetri->tetri++;
 		n++;
 	}
