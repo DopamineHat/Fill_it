@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 02:58:38 by rpagot            #+#    #+#             */
-/*   Updated: 2017/04/21 03:01:56 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/21 23:55:39 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 
 static unsigned short		ft_check_if_valid2(t_tetri *tetri)
 {
-	// printf("%d\n", *tetri->tetri);
-	// printf("%d\n", tetri->i);
-	// printf("%d hehexd2\n", *tetri->tetri);
 	if (*tetri->tetri == 0xCC00)
 	{
 		tetri->area += 4;

@@ -6,26 +6,12 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 03:33:47 by rpagot            #+#    #+#             */
-/*   Updated: 2017/04/21 04:21:09 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/22 06:07:31 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fill_it.h"
 #include <stdio.h>
-
-int		ft_display(t_tetri *tetri)
-{
-	int i;
-
-	i = 0;
-	CHECK(DISPLAY);
-	while (i < 16)
-	{
-		printf("%x\n", tetri->map[i]);
-		++i;
-	}
-	return (1);
-}
 
 int ft_display_rec(t_tetri *tetri, int y)
 {
@@ -66,13 +52,14 @@ void	ft_print_tetri(unsigned short tetri, int i)
 	int bit;
 
 	bit = 0;
+	if (i == 0)
+		ft_putchar('\n');
 	if (tetri & 1)
 		bit = 1;
 	tetri >>= 1;
 	if (i < 16)
 		ft_print_tetri(tetri, i + 1);
-	if (i != 0 && i % 4 == 0)
-		ft_putchar('\n');
+	// if (i != 0 && i % 4 == 0)
 	if (bit == 1)
 		ft_putchar('#');
 	else

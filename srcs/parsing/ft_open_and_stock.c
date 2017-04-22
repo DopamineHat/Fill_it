@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2017/04/21 07:39:46 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/22 06:07:53 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static unsigned short	ft_convert_to_short(char *buff)
 
 	shape = 0;
 	i = 0;
-	ft_putstr(buff);
 	while (i != 20)
 	{
 		if (buff[i] == '#')
@@ -70,10 +69,9 @@ int						ft_read_fd(int fd, t_tetri *tetri)
 		exit(EXIT_FAILURE);
 	ft_looptetri(tetri);
 	ft_memdel((void **)&buff);
-	ft_display_map(tetri);
-	CHECK(FINAL_DISPLAY);
 	ft_final_display(tetri);
-	while (*tetri->pos)
-	printf("area: %d\n", tetri->area);
+	printf("tetri->count_bitss %d\n", tetri->bits_count);
+	printf("tetri->nb: %d\n", tetri->nb);
+	// ft_display_map(tetri);
 	return (ret);
 }
