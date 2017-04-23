@@ -6,46 +6,46 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 03:33:47 by rpagot            #+#    #+#             */
-/*   Updated: 2017/04/22 06:07:31 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/23 07:46:20 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fill_it.h"
 #include <stdio.h>
 
-int ft_display_rec(t_tetri *tetri, int y)
-{
-	int bit;
+// int ft_display_rec(t_tetri *tetri, int y)
+// {
+// 	int bit;
 
-	bit = 0;
-	if (y == 16)
-		return (tetri->i++);
-	if (tetri->map[tetri->i] & 1)
-		bit = 1;
-	tetri->map[tetri->i] >>= 1;
-	ft_display_rec(tetri, y + 1);
-	if (bit == 1)
-		ft_putchar('#');
-	else
-		ft_putchar('.');
-	return (0);
-}
+// 	bit = 0;
+// 	if (y == 16)
+// 		return (*(tetri->x)++);
+// 	if (tetri->best_map[*tetri->x] & 1)
+// 		bit = 1;
+// 	tetri->best_map[*tetri->x] >>= 1;
+// 	ft_display_rec(tetri, y + 1);
+// 	if (bit == 1)
+// 		ft_putchar('#');
+// 	else
+// 		ft_putchar('.');
+// 	return (0);
+// }
 
-void	ft_display_map(t_tetri *tetri)
-{
-	int i;
-	int y;
+// void	ft_display_map(t_tetri *tetri)
+// {
+// 	int i;
+// 	int y;
 
-	i = 0;
-	y = 0;
-	tetri->i = 0;
-	while (i < 16)
-	{
-		ft_display_rec(tetri, y);
-		ft_putchar('\n');
-		i++;
-	}
-}
+// 	i = 0;
+// 	y = 0;
+// 	*tetri->x = 0;
+// 	while (i < 16)
+// 	{
+// 		ft_display_rec(tetri, y);
+// 		ft_putchar('\n');
+// 		i++;
+// 	}
+// }
 
 void	ft_print_tetri(unsigned short tetri, int i)
 {

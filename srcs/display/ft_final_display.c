@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 04:21:38 by rolemass          #+#    #+#             */
-/*   Updated: 2017/04/22 06:08:18 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/23 08:14:20 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*ft_add_tetri_to_display(t_tetri *tetri, char letter, char *tab)
 	while (j >= 0)
 	{
 		if (*tetri->tetri & 1)
-			tab[*tetri->pos + (j % 4) + (j / 4) * 16] = letter;
+			tab[*tetri->best_pos + (j % 4) + (j / 4) * 16] = letter;
 		*tetri->tetri >>= 1;
 		j--;
 	}
@@ -47,28 +47,31 @@ void		ft_final_display(t_tetri *tetri)
 	char	*tab;
 	int		i;
 	char	letter;
-	int size;
+	int		size;
 
 	i = 0;
+	// size = 0;
 	letter = 'A';
-	size = ft_sqrt(tetri->area) * 16;
+	size = tetri->map_size * tetri->map_size;
 	tab = ft_init_tab(size);
-	tetri->tetri -= tetri->nb;
-	tetri->pos -= tetri->nb;
+	// tetri->tetri -= tetri->nb;
+	// tetri->best_pos -= tetri->nb;
+	// printf("map_size %d\n", tetri->map_size);
 	while (i < tetri->nb)
 	{
-		// tab[*tetri->pos] = letter;
 		tab = ft_add_tetri_to_display(tetri, letter, tab);
 		tetri->tetri++;
-		tetri->pos++;
+		tetri->best_pos++;
 		letter++;
 		i++;
 	}
 	i = 0;
 	while (i < size)
 	{
-		if (i % 16 == 0)
+		if (i % tetri->map_size == 0)
 			ft_putchar('\n');
 		ft_putchar(tab[i++]);
 	}
+	CHECK(WTF IS DISPLAYING);
+	ft_memdel((void**)&tab);
 }

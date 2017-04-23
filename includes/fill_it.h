@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/08 16:49:39 by rpagot            #+#    #+#             */
-/*   Updated: 2017/04/22 01:18:12 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/23 08:38:45 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define FILL_IT_H
 
 #include "../Libft/includes/libft.h"
+
+#include <stdio.h> //WARNIIIIIIIIIIIIIIING
 
 # define BUF_SIZE 21
 
@@ -26,11 +28,15 @@ struct						s_tetri
 	unsigned short	*tetri;
 	unsigned short	*tetriception;
 	int				*x;
+	unsigned short	*best_map; //probablement inutile
+	short			*best_pos;
 	unsigned short	*map;
-	unsigned short	*pos;
+	short			*pos;
+	int				backtrack_count;
+	int				init_shift;
 	int				area;
 	int				nb;
-	int				i;
+	int				map_size;
 	int				bits_count;
 };
 
@@ -46,6 +52,8 @@ void						ft_display_map(t_tetri *tetri);
 void						ft_print_tetri(unsigned short tetri, int i);
 void						ft_final_display(t_tetri *tetri);
 void						ft_count_bits(t_tetri *tetri);
+int							ft_backtrack(t_tetri *tetri, int valid_map);
+
 
 
 #endif
