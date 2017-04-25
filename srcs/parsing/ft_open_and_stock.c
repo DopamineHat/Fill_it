@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2017/04/23 08:38:13 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/25 13:49:26 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,15 @@ static void				ft_init_map(t_tetri *tetri)
 	int n;
 
 	n = 0;
+	printf("tetri->nb : %d\n", tetri->nb);
 	if (!(tetri->map = (unsigned short *)malloc(16 * sizeof(unsigned short)))
-		|| !(tetri->best_map = (unsigned short *)malloc(tetri->map_size * sizeof(unsigned short)))
-		|| !(tetri->best_pos = (short*)malloc(sizeof(short) * tetri->nb)))
+		|| !(tetri->best_pos = (short*)malloc(sizeof(short) * tetri->nb))
+		|| !(tetri->pos = (short*)malloc(sizeof(short) * tetri->nb)))
 		exit(1);
 		// del_stuff();
 	while (++n < 16)
-	{
-		tetri->best_map[n] = 0;
 		tetri->map[n] = 0;
-	}
+	*tetri->best_pos = 0;
 }
 
 static unsigned short	ft_convert_to_short(char *buff)
@@ -68,26 +67,20 @@ int						ft_read_fd(int fd, t_tetri *tetri)
 	int				ret;
 	char			*buff;
 
-	if (!(buff = ft_strnew(BUF_SIZE)) || fd == -1)
+	if (!(buff = ft_strnew(BUF_SIZE)) && fd > -1) // separer pour memdel si fd == -1
 	  exit(EXIT_FAILURE);
 	while ((ret = read(fd, buff, BUF_SIZE)) > 0)
 	{
 		if ((*(tetri->tetri) = ft_check_one(buff, tetri)) == 0)
-		{
-			ft_memdel((void **)&buff);
-			return (-1);
-		}
+			exit(EXIT_FAILURE);
 		tetri->tetri++;
 		tetri->nb++;
 	}
-	tetri->pos = (short*)malloc(sizeof(short) * tetri->nb);
-	if (!tetri->pos)
-		exit(EXIT_FAILURE);
 	ft_init_map(tetri);
-	tetri->map_size = ft_sqrt(tetri->area);
+	tetri->map_size = ft_sqrt(tetri->area) + 2; //tester avec 1 plus tard
 	ft_looptetri(tetri);
-	// ft_final_display(tetri);
-	// ft_display_map(tetri);
+	ft_final_display(tetri);
 	ft_memdel((void **)&buff);
+	// ft_display_map(tetri);
 	return (ret);
 }

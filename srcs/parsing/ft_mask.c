@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 02:58:38 by rpagot            #+#    #+#             */
-/*   Updated: 2017/04/21 23:55:39 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/25 13:49:40 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ unsigned short			ft_check_if_valid(t_tetri *tetri)
 	int				i;
 	unsigned short	tmp;
 
-	// printf("%d hehexd\n", *tetri->tetri);
 	i = 0;
 	tmp = *tetri->tetri;
 	while (tmp != 0 && ++i)

@@ -4,7 +4,7 @@ INCLUDES = -I ./includes
 SRC = main.c parsing/ft_open_and_stock.c parsing/ft_mask.c \
 algo/place.c algo/ft_split_short.c display/ft_display.c \
 display/ft_final_display.c parsing/ft_init_stuff.c \
-algo/ft_count_bits.c algo/backtracking.c
+algo/ft_count_bits.c algo/backtracking.c algo/resolve.c
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 

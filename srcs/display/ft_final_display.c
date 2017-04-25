@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 04:21:38 by rolemass          #+#    #+#             */
-/*   Updated: 2017/04/23 08:14:20 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/25 07:22:50 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static char	*ft_init_tab(int size)
 		exit(EXIT_FAILURE);
 	while (i < size)
 		tab[i++] = '.';
+	tab[i] = '\0';
 	return (tab);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/20 06:57:20 by rolemass          #+#    #+#             */
-/*   Updated: 2017/04/22 05:54:52 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/25 03:36:07 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	ft_count_bits(t_tetri *tetri)
 	int				count;
 
 	i = 0;
+	tetri->bits_count = 0;
 	while (i < 4)
 	{
 		count = 0;

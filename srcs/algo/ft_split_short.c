@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/29 06:05:37 by rpagot            #+#    #+#             */
-/*   Updated: 2017/04/21 02:04:39 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/25 12:00:09 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	ft_split_short(t_tetri *tetri)
 	unsigned short tmp;
 
 	tmp = *tetri->tetri >> 12;
+	// *(tetri->tetriception) = 0;
+	// printf("%u\n", *tetri->tetriception);
 	tetri->tetriception[0] = tmp << 12;
 	tmp = *tetri->tetri >> 8;
 	tetri->tetriception[1] = tmp << 12;
