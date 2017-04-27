@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_it.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/08 16:49:39 by rpagot            #+#    #+#             */
-/*   Updated: 2017/04/25 12:16:57 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/27 08:09:35 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ struct						s_tetri
 typedef struct s_tetri		t_tetri;
 
 t_tetri						*ft_init_stuff(void);
-void						ft_split_short(t_tetri *tetri);
+void						ft_split_short(t_tetri *tetri, int n);
 unsigned short				ft_check_if_valid(t_tetri *tetri);
 int							ft_read_fd(int fd, t_tetri *tetri);
 int							ft_looptetri(t_tetri *tetri);
@@ -52,9 +52,9 @@ void						ft_display_map(t_tetri *tetri);
 void						ft_print_tetri(unsigned short tetri, int i);
 void						ft_final_display(t_tetri *tetri);
 void						ft_count_bits(t_tetri *tetri);
-int							ft_place_tetri(t_tetri *tetri, int n);
-int							ft_backtrack(t_tetri *tetri, int to_check_map_size);
-
+int							ft_place_tetri(t_tetri *tetri, int n, int size);
+int							ft_backtrack(t_tetri *tetri, int size);
+void						rinit_map(t_tetri *tetri);
 
 
 #endif

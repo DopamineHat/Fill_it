@@ -6,13 +6,13 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 03:33:30 by rolemass          #+#    #+#             */
-/*   Updated: 2017/04/25 13:55:49 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/27 08:29:02 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fill_it.h"
 
-static int			ft_test_tetri(t_tetri *tetri, int shift)
+static int			ft_test_tetri(t_tetri *tetri, int shift, int n)
 {
 	int i;
 	int y;
@@ -31,17 +31,11 @@ static int			ft_test_tetri(t_tetri *tetri, int shift)
 		tetri->map[y] ^= (tetri->tetriception[i++] >> shift);
 		++y;
 	}
-	*tetri->pos = tetri->x;
-	if (shift + tetri->bits_count < tetri->map_size && tetri->x / 16 < tetri->map_size && tetri->valid_map == 0)
-	{
-		return (tetri->valid_map = 2);
-	}
-	if (tetri->valid_map == 0 && (shift + tetri->bits_count == tetri->map_size || tetri->x / 16 < tetri->map_size))
-		tetri->valid_map = 1;
+	tetri->pos[n] = tetri->x;
 	return (1);
 }
 
-int	ft_place_tetri(t_tetri *tetri, int n)
+int	ft_place_tetri(t_tetri *tetri, int n, int size)
 {
 	int	shift;
 
@@ -49,24 +43,24 @@ int	ft_place_tetri(t_tetri *tetri, int n)
 
 	if (n == tetri->backtrack_count)
 		tetri->x = tetri->init_shift;
-	ft_split_short(tetri);
+	else
+		tetri->x = 0;
+	ft_split_short(tetri, n);
 	ft_count_bits(tetri);
-	while (tetri->x < tetri->area)
+	while (tetri->x < size)
 	{
-		if (tetri->x / 16 == 0)
+		if (tetri->x / 16 > tetri->map_size)
 		{
-			shift = 0;
-			if (tetri->x / 16 > tetri->map_size)
-				return (tetri->valid_map = -1);
+			return (tetri->valid_map = -1);
 		}
-		if (shift + tetri->bits_count > tetri->map_size)
+		if (shift + tetri->bits_count >= tetri->map_size)
 		{
 			tetri->x = tetri->x / 16 * 16 + 16;
 			shift = 0;
 		}
 		if ((tetri->map[tetri->x / 16] & (tetri->tetriception[0] >> shift)) == 0)
 		{
-			if (ft_test_tetri(tetri, shift) >= 1)
+			if (ft_test_tetri(tetri, shift, n) >= 1)
 				return (tetri->valid_map);
 		}
 		shift++;

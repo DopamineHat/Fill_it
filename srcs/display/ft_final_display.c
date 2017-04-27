@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 04:21:38 by rolemass          #+#    #+#             */
-/*   Updated: 2017/04/25 07:22:50 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/27 08:05:08 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*ft_add_tetri_to_display(t_tetri *tetri, char letter, char *tab)
 	while (j >= 0)
 	{
 		if (*tetri->tetri & 1)
-			tab[*tetri->best_pos + (j % 4) + (j / 4) * 16] = letter;
+			tab[*tetri->pos + (j % 4) + (j / 4) * 16] = letter;
 		*tetri->tetri >>= 1;
 		j--;
 	}
@@ -53,23 +53,23 @@ void		ft_final_display(t_tetri *tetri)
 	i = 0;
 	// size = 0;
 	letter = 'A';
-	size = tetri->map_size * tetri->map_size;
+	size = tetri->map_size * 16;
 	tab = ft_init_tab(size);
 	// tetri->tetri -= tetri->nb;
-	// tetri->best_pos -= tetri->nb;
+	// tetri->pos -= tetri->nb;
 	// printf("map_size %d\n", tetri->map_size);
 	while (i < tetri->nb)
 	{
 		tab = ft_add_tetri_to_display(tetri, letter, tab);
 		tetri->tetri++;
-		tetri->best_pos++;
+		tetri->pos++;
 		letter++;
 		i++;
 	}
 	i = 0;
 	while (i < size)
 	{
-		if (i % tetri->map_size == 0)
+		if (i % 16 == 0)
 			ft_putchar('\n');
 		ft_putchar(tab[i++]);
 	}

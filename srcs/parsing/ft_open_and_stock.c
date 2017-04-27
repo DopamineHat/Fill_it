@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2017/04/25 13:49:26 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/27 08:31:06 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,15 @@ static void				ft_init_map(t_tetri *tetri)
 	int n;
 
 	n = 0;
-	printf("tetri->nb : %d\n", tetri->nb);
 	if (!(tetri->map = (unsigned short *)malloc(16 * sizeof(unsigned short)))
 		|| !(tetri->best_pos = (short*)malloc(sizeof(short) * tetri->nb))
 		|| !(tetri->pos = (short*)malloc(sizeof(short) * tetri->nb)))
 		exit(1);
-		// del_stuff();
 	while (++n < 16)
 		tetri->map[n] = 0;
+	n = 0;
+	while (n < tetri->nb)
+		tetri->pos[n++] = 0;
 	*tetri->best_pos = 0;
 }
 
@@ -77,10 +78,9 @@ int						ft_read_fd(int fd, t_tetri *tetri)
 		tetri->nb++;
 	}
 	ft_init_map(tetri);
-	tetri->map_size = ft_sqrt(tetri->area) + 2; //tester avec 1 plus tard
+	tetri->map_size = ft_sqrt(tetri->area); //tester avec 1 plus tard
 	ft_looptetri(tetri);
 	ft_final_display(tetri);
 	ft_memdel((void **)&buff);
-	// ft_display_map(tetri);
 	return (ret);
 }
