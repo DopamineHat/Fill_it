@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2017/04/29 06:32:48 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/29 09:56:21 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int						ft_read_fd(int fd, t_tetri *tetri)
 	int				ret;
 	char			*buff;
 
-	if (!(buff = ft_strnew(BUF_SIZE)) && fd > -1) // separer pour memdel si fd == -1
+	if (!(buff = ft_strnew(BUF_SIZE)) && fd > -1)
 	  exit(EXIT_FAILURE);
 	while ((ret = read(fd, buff, BUF_SIZE)) > 0)
 	{
@@ -76,7 +76,7 @@ int						ft_read_fd(int fd, t_tetri *tetri)
 		tetri->nb++;
 	}
 	ft_init_map(tetri);
-	tetri->map_size = ft_sqrt(tetri->area); //tester avec 1 plus tard
+	tetri->map_size = ft_sqrt(tetri->area);
 	ft_looptetri(tetri);
 	ft_final_display(tetri);
 	ft_memdel((void **)&buff);
