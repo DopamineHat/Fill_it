@@ -6,14 +6,14 @@
 /*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/29 06:05:37 by rpagot            #+#    #+#             */
-/*   Updated: 2017/04/27 02:50:31 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/28 03:31:09 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fill_it.h"
 #include <stdio.h>
 
-void	ft_split_short(t_tetri *tetri, int i)
+void	ft_split_short(t_tetri *restrict tetri, int i)
 {
 	unsigned short tmp;
 

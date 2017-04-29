@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_stuff.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 12:02:13 by rpagot            #+#    #+#             */
-/*   Updated: 2017/04/25 13:50:06 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/29 03:20:32 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,10 @@ t_tetri		*ft_init_stuff()
 	tetri->nb = 0;
 	// tetri->tetri = NULL;
 	// tetri->tetriception = NULL;
-	tetri->best_pos = NULL;
 	tetri->map = NULL;
 	tetri->pos = NULL;
-	tetri->init_shift = 0;
 	tetri->backtrack_count = 0;
 	tetri->x = 0;
-	tetri->valid_map = 0;
 	tetri->map_size = 0;
 	tetri->bits_count = 0;
 	// printf("%p__________\n", tetri->tetri);

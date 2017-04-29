@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 04:21:38 by rolemass          #+#    #+#             */
-/*   Updated: 2017/04/27 08:05:08 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/28 05:20:02 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,9 @@ void		ft_final_display(t_tetri *tetri)
 	int		size;
 
 	i = 0;
-	// size = 0;
 	letter = 'A';
 	size = tetri->map_size * 16;
 	tab = ft_init_tab(size);
-	// tetri->tetri -= tetri->nb;
-	// tetri->pos -= tetri->nb;
-	// printf("map_size %d\n", tetri->map_size);
 	while (i < tetri->nb)
 	{
 		tab = ft_add_tetri_to_display(tetri, letter, tab);

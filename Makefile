@@ -1,5 +1,4 @@
 NAME = fillit
-FLAGS = -Wall -Werror -Wextra -g
 INCLUDES = -I ./includes
 SRC = main.c parsing/ft_open_and_stock.c parsing/ft_mask.c \
 algo/place.c algo/ft_split_short.c display/ft_display.c \
@@ -9,7 +8,7 @@ algo/ft_count_bits.c algo/backtracking.c algo/resolve.c
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 
 CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror -g
+CFLAGS	= -Wall -Wextra -Werror -g -fsanitize=address
 
 LIBFT	= ./Libft/libft.a
 LIBINC	= -I./Libft
@@ -33,7 +32,7 @@ $(LIBFT):
 	make -C ./Libft
 
 $(NAME): $(OBJ)
-	$(CC) $(LIBLINK) -o $(NAME) $(OBJ)
+	$(CC) $(CFLAGS) $(LIBLINK) -o $(NAME) $(OBJ)
 
 clean:
 	rm -rf $(OBJDIR)
@@ -43,4 +42,3 @@ fclean: clean
 	rm Libft/*.o Libft/*.a
 
 re: fclean all
-

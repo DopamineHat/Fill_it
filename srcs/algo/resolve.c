@@ -6,65 +6,65 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 03:33:30 by rolemass          #+#    #+#             */
-/*   Updated: 2017/04/27 08:29:02 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/29 03:21:18 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fill_it.h"
 
-static int			ft_test_tetri(t_tetri *tetri, int shift, int n)
+static int			ft_test_tetri(t_tetri *restrict tetri, int shift, int n, int x)
 {
 	int i;
 	int y;
-	int max;
 
 	i = 1;
-	max = tetri->x / 16;
-	y = max + 1;
+	y = tetri->x + 1;
 	while (i < 4)
-		if ((tetri->map[y++] & (tetri->tetriception[i++] >> shift)) != 0)
+	{
+		if ((tetri->map[y++] & (tetri->tetriception[i] >> shift)) != 0
+			|| (tetri->tetriception[i] != 0 && tetri->x + i >= tetri->map_size))
 			return (0);
-	y = max;
+		i++;
+	}
+	y = tetri->x;
 	i = 0;
-	while (y < max + 4)
+	while (y < tetri->x + 4)
 	{
 		tetri->map[y] ^= (tetri->tetriception[i++] >> shift);
 		++y;
 	}
-	tetri->pos[n] = tetri->x;
+	tetri->pos[n] = x;
 	return (1);
 }
 
-int	ft_place_tetri(t_tetri *tetri, int n, int size)
+int	ft_place_tetri(t_tetri *tetri, int n, size_t size, size_t x)
 {
-	int	shift;
+	int y;
 
-	shift = 0;
-
-	if (n == tetri->backtrack_count)
-		tetri->x = tetri->init_shift;
-	else
-		tetri->x = 0;
-	ft_split_short(tetri, n);
-	ft_count_bits(tetri);
-	while (tetri->x < size)
+	y = (x == 0) ? (0) : (x % 16);
+	// if (x == 0)
+	// 	y = 0;
+	// else
+	// 	y = x % 16;
+	while (x < size)
 	{
-		if (tetri->x / 16 > tetri->map_size)
+		if (y + tetri->bits_count >= tetri->map_size)
 		{
-			return (tetri->valid_map = -1);
+			tetri->x++;
+			x = tetri->x * 16;
+			y = 0;
 		}
-		if (shift + tetri->bits_count >= tetri->map_size)
+		// printf("n = %d\n", n);
+		// printf("x = %d\ny = %d\n", tetri->x, y);
+		// printf("tetriception[0] = %d\n", tetri->tetriception[0]);
+
+		if ((tetri->map[tetri->x] & (tetri->tetriception[0] >> y)) == 0)
 		{
-			tetri->x = tetri->x / 16 * 16 + 16;
-			shift = 0;
+			if (ft_test_tetri(tetri, y, n, x) >= 1)
+				return (x);
 		}
-		if ((tetri->map[tetri->x / 16] & (tetri->tetriception[0] >> shift)) == 0)
-		{
-			if (ft_test_tetri(tetri, shift, n) >= 1)
-				return (tetri->valid_map);
-		}
-		shift++;
-		tetri->x++;
+		y++;
+		x++;
 	}
-	return (tetri->valid_map = -1);
+	return (-1);
 }
