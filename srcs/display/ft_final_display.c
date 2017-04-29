@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 04:21:38 by rolemass          #+#    #+#             */
-/*   Updated: 2017/04/28 05:20:02 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/29 07:47:44 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,11 @@ char	*ft_add_tetri_to_display(t_tetri *tetri, char letter, char *tab)
 	j = 15;
 	while (j >= 0)
 	{
-		if (*tetri->tetri & 1)
+		if (*tetri->tetri >> i & 1)
 			tab[*tetri->pos + (j % 4) + (j / 4) * 16] = letter;
-		*tetri->tetri >>= 1;
+		// *tetri->tetri >> 1;
 		j--;
+		i++;
 	}
 	return (tab);
 }

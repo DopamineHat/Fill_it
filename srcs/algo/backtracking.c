@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/23 02:17:54 by rolemass          #+#    #+#             */
-/*   Updated: 2017/04/29 03:29:49 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/29 06:36:07 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	rinit_map(t_tetri *tetri)
 {
 	int n;
 
-	n = tetri->map_size + 2;
+	n = tetri->map_size + 1;
 	while (n >= 0)
 	{
 		tetri->map[n] = 0;

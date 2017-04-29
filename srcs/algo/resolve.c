@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 03:33:30 by rolemass          #+#    #+#             */
-/*   Updated: 2017/04/29 03:21:18 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/29 06:35:51 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,6 @@ int	ft_place_tetri(t_tetri *tetri, int n, size_t size, size_t x)
 			x = tetri->x * 16;
 			y = 0;
 		}
-		// printf("n = %d\n", n);
-		// printf("x = %d\ny = %d\n", tetri->x, y);
-		// printf("tetriception[0] = %d\n", tetri->tetriception[0]);
-
 		if ((tetri->map[tetri->x] & (tetri->tetriception[0] >> y)) == 0)
 		{
 			if (ft_test_tetri(tetri, y, n, x) >= 1)

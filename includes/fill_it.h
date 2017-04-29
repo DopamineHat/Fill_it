@@ -6,7 +6,7 @@
 /*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/08 16:49:39 by rpagot            #+#    #+#             */
-/*   Updated: 2017/04/29 03:20:04 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/29 06:35:45 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,9 @@ struct						s_tetri
 {
 	unsigned short	*tetri;
 	unsigned short	*tetriception;
-	int				x;
 	unsigned short	*map;
 	short			*pos;
-	int				backtrack_count;
+	int				x;
 	int				area;
 	int				nb;
 	int				map_size;
