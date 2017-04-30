@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2017/04/29 09:56:21 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/04/30 14:19:00 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,20 @@ static void				ft_init_map(t_tetri *tetri)
 
 	n = 0;
 	if (!(tetri->map = (unsigned short *)malloc(16 * sizeof(unsigned short)))
-		|| !(tetri->pos = (short*)malloc(sizeof(short) * tetri->nb)))
+		|| !(tetri->pos = (short*)malloc(sizeof(short) * tetri->nb))
+		|| !(tetri->block = (t_block*)malloc(sizeof(t_block) * tetri->nb))
+		|| !(tetri->range = (unsigned short*)malloc(sizeof(unsigned short) * tetri->nb)))
 		exit(1);
 	while (++n < 16)
 		tetri->map[n] = 0;
+	n = 0;
+	while (n < tetri->nb)
+	{
+		tetri->range[n] = 0;
+		tetri->block[n] = ft_split_short(tetri->block, n, tetri->tetri[n]);
+		n++;
+	}
+	ft_get_tetris_range(tetri);
 	n = 0;
 	while (n < tetri->nb)
 		tetri->pos[n++] = 0;
@@ -66,8 +76,11 @@ int						ft_read_fd(int fd, t_tetri *tetri)
 	int				ret;
 	char			*buff;
 
-	if (!(buff = ft_strnew(BUF_SIZE)) && fd > -1)
+	if (!(buff = ft_strnew(BUF_SIZE)) || fd < 0)
+	{
+	ft_putendl("invalid fd");
 	  exit(EXIT_FAILURE);
+	}
 	while ((ret = read(fd, buff, BUF_SIZE)) > 0)
 	{
 		if ((*(tetri->tetri) = ft_check_one(buff, tetri)) == 0)
@@ -75,9 +88,10 @@ int						ft_read_fd(int fd, t_tetri *tetri)
 		tetri->tetri++;
 		tetri->nb++;
 	}
+	tetri->tetri -= tetri->nb;
 	ft_init_map(tetri);
 	tetri->map_size = ft_sqrt(tetri->area);
-	ft_looptetri(tetri);
+	ft_test_by_size(tetri);
 	ft_final_display(tetri);
 	ft_memdel((void **)&buff);
 	return (ret);

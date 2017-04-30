@@ -3,64 +3,75 @@
 /*                                                        :::      ::::::::   */
 /*   resolve.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/25 03:33:30 by rolemass          #+#    #+#             */
-/*   Updated: 2017/04/29 06:35:51 by rolemass         ###   ########.fr       */
+/*   Created: 2017/04/18 11:08:43 by rpagot            #+#    #+#             */
+/*   Updated: 2017/04/30 14:41:38 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fill_it.h"
+#include <stdio.h>
 
-static int			ft_test_tetri(t_tetri *restrict tetri, int shift, int n, int x)
+void ft_unmap_tetri(t_tetri *tetri, int i)
 {
-	int i;
+	int x;
 	int y;
 
-	i = 1;
-	y = tetri->x + 1;
-	while (i < 4)
-	{
-		if ((tetri->map[y++] & (tetri->tetriception[i] >> shift)) != 0
-			|| (tetri->tetriception[i] != 0 && tetri->x + i >= tetri->map_size))
-			return (0);
-		i++;
-	}
-	y = tetri->x;
-	i = 0;
-	while (y < tetri->x + 4)
-	{
-		tetri->map[y] ^= (tetri->tetriception[i++] >> shift);
-		++y;
-	}
-	tetri->pos[n] = x;
-	return (1);
+	x = tetri->pos[i] / 16;
+	y = tetri->pos[i] % 16;
+	tetri->map[x] ^= tetri->block[i].line1 >> y;
+	tetri->map[x + 1] ^= tetri->block[i].line2 >> y;
+	tetri->map[x + 2] ^= tetri->block[i].line3 >> y;
+	tetri->map[x + 3] ^= tetri->block[i].line4 >> y;
+	i++;
 }
 
-int	ft_place_tetri(t_tetri *tetri, int n, size_t size, size_t x)
+static int			ft_solve_tetri(t_tetri *tetri, int i, size_t size, size_t x)
 {
-	int y;
+	if (i >= tetri->nb)
+		return (0);
 
-	y = (x == 0) ? (0) : (x % 16);
-	// if (x == 0)
-	// 	y = 0;
-	// else
-	// 	y = x % 16;
-	while (x < size)
+	while (1)
 	{
-		if (y + tetri->bits_count >= tetri->map_size)
+		// CHECK(TEST_BY_SIZE);
+		if (x + tetri->range[i] > size)
+			return (-1);
+		if (ft_place_tetri(tetri, i, size, x) == -1)
+			return (-1);
+		else if (ft_solve_tetri(tetri, i + 1, size, 0) == 0)
 		{
-			tetri->x++;
-			x = tetri->x * 16;
-			y = 0;
+			CHECK(YOLO);
+			return (0);
 		}
-		if ((tetri->map[tetri->x] & (tetri->tetriception[0] >> y)) == 0)
-		{
-			if (ft_test_tetri(tetri, y, n, x) >= 1)
-				return (x);
-		}
-		y++;
+			// printf("x = %zu\n", x);
+			// printf("i = %d\n", i);
+		ft_unmap_tetri(tetri, i);
 		x++;
+		// ft_place_tetri(tetri, i, size, ++x);
+	}
+}
+
+int					ft_test_by_size(t_tetri *tetri)
+{
+	int size;
+
+	// tetri->tetri -= (tetri->nb);
+	while (1)
+	{
+		size = tetri->map_size * 16;
+		// if (ft_test_each_tetri_soft(tetri, size) == 0)
+		// 	return (size);
+		rinit_map(tetri);
+		printf("map_size %d\n", tetri->map_size);
+		if (ft_solve_tetri(tetri, 0, size, 0) == 0)
+		{
+			CHECK(RESOLVE_HARD);
+			printf("nb = %d\n", tetri->nb);
+			return (size);
+		}
+		// exit(1);
+		tetri->map_size++;
 	}
 	return (-1);
 }

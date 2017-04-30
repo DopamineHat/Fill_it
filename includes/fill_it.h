@@ -6,7 +6,7 @@
 /*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/08 16:49:39 by rpagot            #+#    #+#             */
-/*   Updated: 2017/04/29 06:35:45 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/04/30 14:10:10 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,31 +23,42 @@
   ft_putendl(#x);					\
   ft_putendl("___________"); } while(0);
 
+
+struct						s_block
+{
+	unsigned short line1;
+	unsigned short line2;
+	unsigned short line3;
+	unsigned short line4;
+};
+
 struct						s_tetri
 {
 	unsigned short	*tetri;
-	unsigned short	*tetriception;
+	// unsigned short	*tetriception;
+	struct s_block	*block;
 	unsigned short	*map;
 	short			*pos;
 	int				x;
 	int				area;
 	int				nb;
 	int				map_size;
-	int				bits_count;
+	unsigned short	*range;
 };
 
 typedef struct s_tetri		t_tetri;
+typedef struct s_block		t_block;
 
 t_tetri						*ft_init_stuff(void);
-void						ft_split_short(t_tetri *restrict tetri, int n);
+t_block						ft_split_short(t_block *restrict block, int n, unsigned short tetri);
 unsigned short				ft_check_if_valid(t_tetri *tetri);
 int							ft_read_fd(int fd, t_tetri *tetri);
-int							ft_looptetri(t_tetri *tetri);
+int							ft_test_by_size(t_tetri *tetri);
 int							ft_display(t_tetri *tetri);
 void						ft_display_map(t_tetri *tetri);
 void						ft_print_tetri(unsigned short tetri, int i);
 void						ft_final_display(t_tetri *tetri);
-void						ft_count_bits(t_tetri *tetri);
+void						ft_get_tetris_range(t_tetri *tetri);
 int							ft_place_tetri(t_tetri *tetri, int n, size_t size, size_t x);
 int							ft_backtrack(t_tetri *tetri, int size, int failed_at_i, int first_fail);
 void						rinit_map(t_tetri *tetri);

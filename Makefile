@@ -1,14 +1,14 @@
 NAME = fillit
 INCLUDES = -I ./includes
 SRC = main.c parsing/ft_open_and_stock.c parsing/ft_mask.c \
-algo/place.c algo/ft_split_short.c display/ft_display.c \
+algo/resolve.c algo/ft_split_short.c display/ft_display.c \
 display/ft_final_display.c parsing/ft_init_stuff.c \
-algo/ft_count_bits.c algo/backtracking.c algo/resolve.c
+algo/ft_count_bits.c algo/backtracking.c algo/place_one.c
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 
 CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror -g #-fsanitize=address
+CFLAGS	= -Wall -Wextra -Werror -g -fsanitize=address
 
 LIBFT	= ./Libft/libft.a
 LIBINC	= -I./Libft
