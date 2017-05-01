@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 04:21:38 by rolemass          #+#    #+#             */
-/*   Updated: 2017/04/29 07:47:44 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/05/01 13:49:12 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ static char	*ft_init_tab(int size)
 	char	*tab;
 
 	i = 0;
-	if (!(tab = (char*)malloc(sizeof(char) * size + 1)))
+	if (!(tab = (char*)ft_memalloc(sizeof(char) * size + 4)))
 		exit(EXIT_FAILURE);
 	while (i < size)
 		tab[i++] = '.';
-	tab[i] = '\0';
+	// tab[i] = '\0';
 	return (tab);
 }
 
-char	*ft_add_tetri_to_display(t_tetri *tetri, char letter, char *tab)
+char	*ft_add_tetri_to_display(t_tetri *tetri, char letter, char *tab, int n)
 {
 	int	i;
 	int	j;
@@ -35,8 +35,8 @@ char	*ft_add_tetri_to_display(t_tetri *tetri, char letter, char *tab)
 	j = 15;
 	while (j >= 0)
 	{
-		if (*tetri->tetri >> i & 1)
-			tab[*tetri->pos + (j % 4) + (j / 4) * 16] = letter;
+		if (*tetri->tetri >> i & 1 && tetri->pos[n] > -1)
+			tab[tetri->pos[n] + (j % 4) + (j / 4) * 16] = letter;
 		// *tetri->tetri >> 1;
 		j--;
 		i++;
@@ -46,20 +46,20 @@ char	*ft_add_tetri_to_display(t_tetri *tetri, char letter, char *tab)
 
 void		ft_final_display(t_tetri *tetri)
 {
-	char	*tab;
 	int		i;
 	char	letter;
 	int		size;
+	char	*tab;
 
 	i = 0;
 	letter = 'A';
 	size = tetri->map_size * 16;
 	tab = ft_init_tab(size);
-	while (i < tetri->nb)
+	while (i < tetri->nb && tetri->pos[i] > -1)
 	{
-		tab = ft_add_tetri_to_display(tetri, letter, tab);
+		tab = ft_add_tetri_to_display(tetri, letter, tab, i);
 		tetri->tetri++;
-		tetri->pos++;
+		// tetri->pos++;
 		letter++;
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 11:08:43 by rpagot            #+#    #+#             */
-/*   Updated: 2017/04/30 14:41:38 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/05/01 14:11:32 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,31 +24,36 @@ void ft_unmap_tetri(t_tetri *tetri, int i)
 	tetri->map[x + 1] ^= tetri->block[i].line2 >> y;
 	tetri->map[x + 2] ^= tetri->block[i].line3 >> y;
 	tetri->map[x + 3] ^= tetri->block[i].line4 >> y;
+
 	i++;
 }
 
-static int			ft_solve_tetri(t_tetri *tetri, int i, size_t size, size_t x)
+static int			ft_solve_tetri(t_tetri *tetri, int i, size_t size, int x)
 {
 	if (i >= tetri->nb)
 		return (0);
-
+	// if (i == 8)
+	// {
+	// 	ft_final_display(tetri);
+	// 	exit(1);
+	// }
+	tetri->x = 0;
 	while (1)
 	{
-		// CHECK(TEST_BY_SIZE);
-		if (x + tetri->range[i] > size)
-			return (-1);
-		if (ft_place_tetri(tetri, i, size, x) == -1)
-			return (-1);
-		else if (ft_solve_tetri(tetri, i + 1, size, 0) == 0)
+		if (x > 0 && (tetri->range[i] - 1) + (x % 16) >= tetri->map_size)
 		{
-			CHECK(YOLO);
-			return (0);
+			x = (x / 16) * 16 + 16;
+		}
+		if ((size_t)(x + tetri->range[i]) >= size)
+			return (tetri->pos[i] = -1);
+		if (ft_test_tetri(tetri, i, x) == 0)
+		{
+			if (ft_solve_tetri(tetri, i + 1, size, 0) == 0)
+				return (0);
+			ft_unmap_tetri(tetri, i);
 		}
 			// printf("x = %zu\n", x);
-			// printf("i = %d\n", i);
-		ft_unmap_tetri(tetri, i);
 		x++;
-		// ft_place_tetri(tetri, i, size, ++x);
 	}
 }
 
@@ -56,18 +61,17 @@ int					ft_test_by_size(t_tetri *tetri)
 {
 	int size;
 
-	// tetri->tetri -= (tetri->nb);
 	while (1)
 	{
 		size = tetri->map_size * 16;
-		// if (ft_test_each_tetri_soft(tetri, size) == 0)
-		// 	return (size);
 		rinit_map(tetri);
 		printf("map_size %d\n", tetri->map_size);
+		printf("range[0] %d\n", tetri->range[0]);
 		if (ft_solve_tetri(tetri, 0, size, 0) == 0)
 		{
 			CHECK(RESOLVE_HARD);
 			printf("nb = %d\n", tetri->nb);
+			printf("pos[0] %d\n", tetri->pos[0]);
 			return (size);
 		}
 		// exit(1);
