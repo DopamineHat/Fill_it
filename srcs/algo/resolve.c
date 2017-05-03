@@ -6,7 +6,7 @@
 /*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 11:08:43 by rpagot            #+#    #+#             */
-/*   Updated: 2017/05/01 14:11:32 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/05/03 06:59:56 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,28 +24,19 @@ void ft_unmap_tetri(t_tetri *tetri, int i)
 	tetri->map[x + 1] ^= tetri->block[i].line2 >> y;
 	tetri->map[x + 2] ^= tetri->block[i].line3 >> y;
 	tetri->map[x + 3] ^= tetri->block[i].line4 >> y;
-
 	i++;
 }
 
-static int			ft_solve_tetri(t_tetri *tetri, int i, size_t size, int x)
+static int			ft_solve_tetri(t_tetri *tetri, int i, int size, int x)
 {
 	if (i >= tetri->nb)
 		return (0);
-	// if (i == 8)
-	// {
-	// 	ft_final_display(tetri);
-	// 	exit(1);
-	// }
-	tetri->x = 0;
 	while (1)
 	{
-		if (x > 0 && (tetri->range[i] - 1) + (x % 16) >= tetri->map_size)
-		{
-			x = (x / 16) * 16 + 16;
-		}
-		if ((size_t)(x + tetri->range[i]) >= size)
+		if ((x + tetri->range[i]) >= size)
 			return (tetri->pos[i] = -1);
+		if (x > 0 && (tetri->range[i]) + (x % 16) >= tetri->map_size)
+			x = (x / 16) * 16 + 16;
 		if (ft_test_tetri(tetri, i, x) == 0)
 		{
 			if (ft_solve_tetri(tetri, i + 1, size, 0) == 0)
