@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2017/05/01 13:41:21 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/05/03 07:26:55 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,8 @@ int						ft_read_fd(int fd, t_tetri *tetri)
 	}
 	tetri->tetri -= tetri->nb;
 	ft_init_map(tetri);
-	// tetri->map_size = ft_sqrt(tetri->area);
-	tetri->map_size = ft_sqrt(tetri->nb * 4);
+	tetri->map_size = ft_sqrt(tetri->area);
+	// tetri->map_size = ft_sqrt(tetri->nb * 4);
 	ft_test_by_size(tetri);
 	ft_final_display(tetri);
 	ft_memdel((void **)&buff);

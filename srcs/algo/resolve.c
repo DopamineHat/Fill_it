@@ -6,7 +6,7 @@
 /*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 11:08:43 by rpagot            #+#    #+#             */
-/*   Updated: 2017/05/03 07:04:36 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/05/03 09:41:43 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,16 @@ static int			ft_solve_tetri(t_tetri *tetri, int i, int size, int x)
 	{
 		if ((x + tetri->range[i]) >= size)
 			return (tetri->pos[i] = -1);
-		if (x > 0 && (tetri->range[i]) + (x % 16) >= tetri->map_size)
+		if (x > 0 && (((tetri->range[i]) + (x % 16) - 1) == tetri->map_size))
+		{
 			x = (x / 16) * 16 + 16;
+		}
 		if (ft_test_tetri(tetri, i, x) == 0)
 		{
 			if (ft_solve_tetri(tetri, i + 1, size, 0) == 0)
 				return (0);
 			ft_unmap_tetri(tetri, i);
 		}
-			// printf("x = %zu\n", x);
 		x++;
 	}
 }
@@ -56,16 +57,12 @@ int					ft_test_by_size(t_tetri *tetri)
 	{
 		size = tetri->map_size * 16;
 		rinit_map(tetri);
-		// printf("map_size %d\n", tetri->map_size);
-		// printf("range[0] %d\n", tetri->range[0]);
 		if (ft_solve_tetri(tetri, 0, size, 0) == 0)
 		{
 			CHECK(RESOLVE_HARD);
-			// printf("nb = %d\n", tetri->nb);
-			// printf("pos[0] %d\n", tetri->pos[0]);
 			return (size);
 		}
-		// exit(1);
+		exit(1);
 		tetri->map_size++;
 	}
 	return (-1);

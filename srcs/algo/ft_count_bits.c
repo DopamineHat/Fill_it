@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/20 06:57:20 by rolemass          #+#    #+#             */
-/*   Updated: 2017/05/01 15:42:14 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/05/03 09:21:35 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,13 @@ static int	ft_count_bits(unsigned short line)
 	while (i < 16 && tmp > 0)
 	{
 		if (tmp & 1)
-			count++;
+		{
+			while (i < 16)
+			{
+				count++;
+				i++;
+			}
+		}
 		tmp >>= 1;
 		i++;
 	}
