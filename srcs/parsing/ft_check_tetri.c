@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mask.c                                          :+:      :+:    :+:   */
+/*   ft_check_tetri.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 02:58:38 by rpagot            #+#    #+#             */
-/*   Updated: 2017/05/04 05:17:00 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/05/04 06:20:59 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static unsigned short		ft_check_if_valid2(t_tetri *tetri)
 	return (0);
 }
 
-unsigned short			ft_check_if_valid(t_tetri *tetri)
+unsigned short				ft_check_if_valid(t_tetri *tetri)
 {
 	int				i;
 	unsigned short	tmp;

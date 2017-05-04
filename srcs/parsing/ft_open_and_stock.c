@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2017/05/04 05:17:51 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/05/04 06:20:00 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ int						ft_read_fd(int fd, t_tetri *tetri)
 
 	if (!(buff = ft_strnew(BUF_SIZE)) || fd < 0)
 	{
-	ft_putendl("invalid fd");
-	  exit(EXIT_FAILURE);
+		ft_putendl("invalid fd");
+		exit(EXIT_FAILURE);
 	}
 	while ((ret = read(fd, buff, BUF_SIZE)) > 0)
 	{

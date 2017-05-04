@@ -6,23 +6,16 @@
 /*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/08 16:49:39 by rpagot            #+#    #+#             */
-/*   Updated: 2017/05/04 05:18:19 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/05/04 06:18:45 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILL_IT_H
 # define FILL_IT_H
 
-#include "../Libft/includes/libft.h"
-
-#include <stdio.h> //WARNIIIIIIIIIIIIIIING
+# include "../Libft/includes/libft.h"
 
 # define BUF_SIZE 21
-
-# define CHECK(x) do { ft_putendl("_______");	\
-  ft_putendl(#x);					\
-  ft_putendl("___________"); } while(0);
-
 
 struct						s_block
 {
@@ -58,6 +51,5 @@ void						ft_print_tetri(unsigned short tetri, int i);
 void						ft_final_display(t_tetri *tetri);
 void						ft_get_tetris_range(t_tetri *tetri);
 int							ft_test_tetri(t_tetri *restrict tetri, int i, int x);
-int							ft_backtrack(t_tetri *tetri, int size, int failed_at_i, int first_fail);
 
 #endif
