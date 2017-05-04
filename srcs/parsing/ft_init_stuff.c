@@ -6,7 +6,7 @@
 /*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 12:02:13 by rpagot            #+#    #+#             */
-/*   Updated: 2017/05/04 05:06:41 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/05/04 05:19:11 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ t_tetri		*ft_init_stuff(void)
 	|| !(tetri->tetri = (unsigned short *)malloc(32 * sizeof(unsigned short))))
 		exit(EXIT_FAILURE);
 	tetri->area = 0;
-	tetri->cnt = 0;
 	tetri->nb = 0;
 	tetri->map = NULL;
 	tetri->pos = NULL;
