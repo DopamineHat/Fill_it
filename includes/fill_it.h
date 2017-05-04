@@ -6,7 +6,7 @@
 /*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/08 16:49:39 by rpagot            #+#    #+#             */
-/*   Updated: 2017/05/01 10:58:09 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/05/04 02:08:21 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,5 @@ void						ft_get_tetris_range(t_tetri *tetri);
 // int							ft_place_tetri(t_tetri *tetri, int n, size_t size, int x);
 int							ft_test_tetri(t_tetri *restrict tetri, int i, int x);
 int							ft_backtrack(t_tetri *tetri, int size, int failed_at_i, int first_fail);
-void						rinit_map(t_tetri *tetri);
-
 
 #endif

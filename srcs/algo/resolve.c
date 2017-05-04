@@ -6,14 +6,29 @@
 /*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 11:08:43 by rpagot            #+#    #+#             */
-/*   Updated: 2017/05/03 09:41:43 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/05/04 04:39:11 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fill_it.h"
 #include <stdio.h>
 
-void ft_unmap_tetri(t_tetri *tetri, int i)
+static void			rinit_map(t_tetri *tetri)
+{
+	int i;
+
+	i = 0;
+	while (i < tetri->map_size)
+	{
+		tetri->map[i] = 0;
+		i++;
+	}
+	i = 0;
+	while (i < tetri->nb)
+		tetri->pos[i++] = 0;
+}
+
+static void			ft_unmap_tetri(t_tetri *tetri, int i)
 {
 	int x;
 	int y;
@@ -60,6 +75,8 @@ int					ft_test_by_size(t_tetri *tetri)
 		if (ft_solve_tetri(tetri, 0, size, 0) == 0)
 		{
 			CHECK(RESOLVE_HARD);
+			ft_memdel((void**)&tetri->block);
+			ft_memdel((void**)&tetri->range);
 			return (size);
 		}
 		exit(1);

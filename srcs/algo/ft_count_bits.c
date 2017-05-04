@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/20 06:57:20 by rolemass          #+#    #+#             */
-/*   Updated: 2017/05/03 09:21:35 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/05/04 04:39:58 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,7 @@ static int	ft_count_bits(unsigned short line)
 	return (count);
 }
 
-
-void	ft_get_tetris_range(t_tetri *tetri)
+void		ft_get_tetris_range(t_tetri *tetri)
 {
 	int i;
 	int count;

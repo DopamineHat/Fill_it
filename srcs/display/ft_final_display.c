@@ -6,37 +6,49 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 04:21:38 by rolemass          #+#    #+#             */
-/*   Updated: 2017/05/03 09:41:51 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/05/04 02:24:55 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fill_it.h"
 
-static char	*ft_init_tab(int size)
+static char	*ft_init_tab(int size, t_tetri *tetri)
 {
 	int		i;
 	char	*tab;
 
-	i = 0;
+	i = 1;
 	if (!(tab = (char*)ft_memalloc(sizeof(char) * size + 4)))
 		exit(EXIT_FAILURE);
-	while (i < size)
-		tab[i++] = '.';
-	// tab[i] = '\0';
+	while (i < size + 1)
+	{
+		// if (i == tetri->map_size)
+		// 	tab[i] = '\n';
+		if (i > 0 && i % (tetri->map_size + 1) == 0)
+			tab[i] = '\n';
+		else
+			tab[i] = '.';
+		i++;
+	}
 	return (tab);
 }
 
-char	*ft_add_tetri_to_display(t_tetri *tetri, char letter, char *tab, int n)
+static char	*ft_add_tetri_to_display(t_tetri *tetri, char letter, char *tab, int n)
 {
 	int	i;
 	int	j;
+	int pos;
 
 	i = 0;
 	j = 15;
 	while (j >= 0)
 	{
 		if (((tetri->tetri[n] >> i) & 1) && tetri->pos[n] > -1)
-			tab[tetri->pos[n] + (j % 4) + (j / 4) * 16] = letter;
+		{
+			pos = tetri->pos[n] / 16 * (tetri->map_size + 1)
+			+ tetri->pos[n] % 16 + j / 4 * (tetri->map_size + 1) + j % 4 + 1;
+			tab[pos] = letter;
+		}
 		j--;
 		i++;
 	}
@@ -52,22 +64,17 @@ void		ft_final_display(t_tetri *tetri)
 
 	i = 0;
 	letter = 'A';
-	size = tetri->map_size * 16;
-	tab = ft_init_tab(size);
+	size = tetri->map_size * (tetri->map_size + 1);
+	tab = ft_init_tab(size, tetri);
 	while (i < tetri->nb && tetri->pos[i] > -1)
 	{
 		tab = ft_add_tetri_to_display(tetri, letter, tab, i);
-		// tetri->pos++;
 		letter++;
 		i++;
 	}
-	i = 0;
-	while (i < size)
-	{
-		if (i % 16 == 0)
-			ft_putchar('\n');
-		ft_putchar(tab[i++]);
-	}
-	CHECK(WTF IS DISPLAYING);
-	ft_memdel((void**)&tab);
+	i = 1;
+	tab++;
+	write(1, tab, size);
+	exit(1);
+	// ft_memdel((void**)&tab);
 }
