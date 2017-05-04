@@ -6,7 +6,7 @@
 /*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/18 21:40:46 by rpagot            #+#    #+#             */
-/*   Updated: 2016/11/18 21:41:01 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/05/03 11:25:49 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_putstr(char const *s)
 {
-	while (*s)
-		write(1, s++, 1);
+	size_t size;
+
+	size = ft_strlen(s);
+		write(1, s, size);
 }

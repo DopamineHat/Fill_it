@@ -6,7 +6,7 @@
 /*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 12:02:13 by rpagot            #+#    #+#             */
-/*   Updated: 2017/05/01 11:01:23 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/05/04 02:16:26 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ t_tetri		*ft_init_stuff()
 	tetri->nb = 0;
 	tetri->map = NULL;
 	tetri->pos = NULL;
-	tetri->x = 0;
 	tetri->map_size = 0;
 	return (tetri);
 }
