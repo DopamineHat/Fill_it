@@ -6,7 +6,7 @@
 /*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/08 16:49:39 by rpagot            #+#    #+#             */
-/*   Updated: 2017/05/04 05:01:48 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/05/04 05:06:07 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ struct						s_tetri
 	unsigned short	*map;
 	short			*pos;
 	int				area;
+	int				cnt;
 	int				nb;
 	int				map_size;
 	unsigned short	*range;
