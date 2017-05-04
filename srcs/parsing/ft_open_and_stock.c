@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2017/05/04 06:20:00 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/05/04 09:47:40 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ static void				ft_init_map(t_tetri *tetri)
 	if (!(tetri->map = (unsigned short *)malloc(16 * sizeof(unsigned short)))
 		|| !(tetri->pos = (short*)malloc(sizeof(short) * tetri->nb))
 		|| !(tetri->block = (t_block*)malloc(sizeof(t_block) * tetri->nb))
-		|| !(tetri->range = (unsigned short*)malloc(sizeof(unsigned short) * tetri->nb)))
+		|| !(tetri->range = (unsigned short*)
+			malloc(sizeof(unsigned short) * tetri->nb)))
 		exit(1);
 	while (++n < 16)
 		tetri->map[n] = 0;
