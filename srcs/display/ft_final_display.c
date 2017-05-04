@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 04:21:38 by rolemass          #+#    #+#             */
-/*   Updated: 2017/05/04 02:24:55 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/05/04 04:51:43 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ static char	*ft_init_tab(int size, t_tetri *tetri)
 		exit(EXIT_FAILURE);
 	while (i < size + 1)
 	{
-		// if (i == tetri->map_size)
-		// 	tab[i] = '\n';
 		if (i > 0 && i % (tetri->map_size + 1) == 0)
 			tab[i] = '\n';
 		else
@@ -33,7 +31,7 @@ static char	*ft_init_tab(int size, t_tetri *tetri)
 	return (tab);
 }
 
-static char	*ft_add_tetri_to_display(t_tetri *tetri, char letter, char *tab, int n)
+static char	*ft_add_tetri_to_tab(t_tetri *tetri, char letter, char *tab, int n)
 {
 	int	i;
 	int	j;
@@ -68,7 +66,7 @@ void		ft_final_display(t_tetri *tetri)
 	tab = ft_init_tab(size, tetri);
 	while (i < tetri->nb && tetri->pos[i] > -1)
 	{
-		tab = ft_add_tetri_to_display(tetri, letter, tab, i);
+		tab = ft_add_tetri_to_tab(tetri, letter, tab, i);
 		letter++;
 		i++;
 	}
@@ -76,5 +74,4 @@ void		ft_final_display(t_tetri *tetri)
 	tab++;
 	write(1, tab, size);
 	exit(1);
-	// ft_memdel((void**)&tab);
 }

@@ -6,7 +6,7 @@
 /*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/08 16:49:39 by rpagot            #+#    #+#             */
-/*   Updated: 2017/05/04 04:55:15 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/05/04 05:01:48 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,10 @@ struct						s_block
 struct						s_tetri
 {
 	unsigned short	*tetri;
-	// unsigned short	*tetriception;
 	struct s_block	*block;
 	unsigned short	*map;
 	short			*pos;
-	int				x;
 	int				area;
-	int				cnt;
 	int				nb;
 	int				map_size;
 	unsigned short	*range;
@@ -60,7 +57,6 @@ void						ft_display_map(t_tetri *tetri);
 void						ft_print_tetri(unsigned short tetri, int i);
 void						ft_final_display(t_tetri *tetri);
 void						ft_get_tetris_range(t_tetri *tetri);
-// int							ft_place_tetri(t_tetri *tetri, int n, size_t size, int x);
 int							ft_test_tetri(t_tetri *restrict tetri, int i, int x);
 int							ft_backtrack(t_tetri *tetri, int size, int failed_at_i, int first_fail);
 

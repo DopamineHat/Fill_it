@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 03:33:30 by rolemass          #+#    #+#             */
-/*   Updated: 2017/05/04 01:59:52 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/05/04 04:54:58 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int			ft_test_tetri(t_tetri *restrict tetri, int i, int x)
 		return (-1);
 	if ((tetri->block[i].line4 != 0 && y + 3 >= tetri->map_size)
 	|| (tetri->block[i].line3 != 0 && y + 2 >= tetri->map_size)
- 	|| (tetri->block[i].line2 != 0 && y + 1 >= tetri->map_size))
+	|| (tetri->block[i].line2 != 0 && y + 1 >= tetri->map_size))
 		return (-1);
 	tetri->map[y] ^= (tetri->block[i].line1 >> shift);
 	tetri->map[y + 1] ^= (tetri->block[i].line2 >> shift);
