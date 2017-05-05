@@ -6,7 +6,7 @@
 /*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 11:08:43 by rpagot            #+#    #+#             */
-/*   Updated: 2017/05/04 04:43:58 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/05/05 13:25:18 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,10 @@ int					ft_test_by_size(t_tetri *tetri)
 		rinit_map(tetri);
 		if (ft_solve_tetri(tetri, 0, size, 0) == 0)
 		{
-			CHECK(RESOLVE_HARD);
 			ft_memdel((void**)&tetri->block);
 			ft_memdel((void**)&tetri->range);
 			return (size);
 		}
-		exit(1);
 		tetri->map_size++;
 	}
 	return (-1);

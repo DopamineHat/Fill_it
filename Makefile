@@ -8,7 +8,7 @@ algo/ft_count_bits.c algo/place_one.c
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 
 CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror -g #-fsanitize=address
+CFLAGS	= -Wall -Wextra -Werror -g
 
 LIBFT	= ./Libft/libft.a
 LIBINC	= -I./Libft

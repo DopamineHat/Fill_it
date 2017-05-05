@@ -6,13 +6,13 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/25 03:33:30 by rolemass          #+#    #+#             */
-/*   Updated: 2017/05/04 04:54:58 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/05/05 13:20:09 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fill_it.h"
 
-int			ft_test_tetri(t_tetri *restrict tetri, int i, int x)
+int			ft_test_tetri(t_tetri *tetri, int i, int x)
 {
 	int shift;
 	int y;
