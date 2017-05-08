@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2017/05/05 20:41:32 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/05/08 06:52:12 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,27 +77,17 @@ int						ft_read_fd(int fd, t_tetri *tetri)
 	int				ret;
 	char			*buff;
 
-	if (!(buff = ft_strnew(BUF_SIZE)) || fd < 0)
-	{
-		ft_putendl("invalid fd");
-		exit(EXIT_FAILURE);
-	}
+	if (!(buff = ft_strnew(BUF_SIZE + 1)) || fd < 0)
+		return (-1);
 	while ((ret = read(fd, buff, BUF_SIZE)) > 0)
 	{
-		if ((*(tetri->tetri) = ft_check_one(buff, tetri)) == 0 || ret < 20)
-		{
-			// ft_putendl("usage: valid_tetri newline");
-			ft_putendl("error");
-			exit(EXIT_FAILURE);
-		}
+		if (ret < 20 || (*(tetri->tetri) = ft_check_one(buff, tetri)) == 0)
+			return (-1);
 		tetri->tetri++;
 		tetri->nb++;
 	}
 	if (ret == -1)
-	{
-		ft_putendl("error");
-		exit(EXIT_FAILURE);
-	}
+		return (-1);
 	tetri->tetri -= tetri->nb;
 	ft_init_map(tetri);
 	ft_memdel((void **)&buff);

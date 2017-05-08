@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 12:27:43 by rpagot            #+#    #+#             */
-/*   Updated: 2017/04/25 12:17:28 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/05/08 06:46:35 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int		main(int argc, char **argv)
 {
-	t_tetri *tetri;
+	t_tetri	*tetri;
+	int		fd;
 
 	tetri = ft_init_stuff();
 	if (argc != 2)
@@ -22,10 +23,11 @@ int		main(int argc, char **argv)
 		ft_putendl_fd("u wot m8", 2);
 		return (1);
 	}
-	if (ft_read_fd(open(argv[1], O_RDONLY), tetri) == -1)
+	if (ft_read_fd((fd = open(argv[1], O_RDONLY)), tetri) == -1)
 	{
-		ft_putendl_fd("error", 2);
+		ft_putendl_fd("error", 1);
 		return (1);
 	}
+	close(fd);
 	return (0);
 }
