@@ -6,7 +6,7 @@
 /*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 11:08:43 by rpagot            #+#    #+#             */
-/*   Updated: 2017/05/05 13:25:18 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/05/10 14:34:10 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ static int			ft_solve_tetri(t_tetri *tetri, int i, int size, int x)
 		return (0);
 	while (1)
 	{
-		if ((x + tetri->range[i]) >= size)
-			return (tetri->pos[i] = -1);
 		if (x > 0 && (((tetri->range[i]) + (x % 16) - 1) == tetri->map_size))
 		{
 			x = (x / 16) * 16 + 16;
 		}
+		if ((x + tetri->range[i]) >= size)
+			return (-1);
 		if (ft_test_tetri(tetri, i, x) == 0)
 		{
 			if (ft_solve_tetri(tetri, i + 1, size, 0) == 0)

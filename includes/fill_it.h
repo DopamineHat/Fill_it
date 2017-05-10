@@ -6,7 +6,7 @@
 /*   By: rpagot <rpagot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/08 16:49:39 by rpagot            #+#    #+#             */
-/*   Updated: 2017/05/08 04:56:43 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/05/10 14:27:13 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FILL_IT_H
 
 # include "../Libft/includes/libft.h"
+#include <stdio.h> //WARNING
 
 # define BUF_SIZE 21
 

@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/20 06:57:20 by rolemass          #+#    #+#             */
-/*   Updated: 2017/05/04 04:39:58 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/05/10 14:35:12 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ void		ft_get_tetris_range(t_tetri *tetri)
 			tetri->range[i] = count;
 		if ((count = ft_count_bits(tetri->block[i].line4)) > tetri->range[i])
 			tetri->range[i] = count;
+		if (tetri->range[i] > tetri->map_size)
+		{
+			tetri->map_size = tetri->range[i];
+		}
 		i++;
 	}
 }
