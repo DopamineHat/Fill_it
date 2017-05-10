@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2017/05/10 09:46:28 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/05/10 11:21:36 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,18 +77,22 @@ static unsigned short	ft_check_one(char *buff, t_tetri *tetri)
 int						ft_read_fd(int fd, t_tetri *tetri)
 {
 	int				ret;
+	int				retprece;
 	char			*buff;
 
 	if (!(buff = ft_strnew(BUF_SIZE + 1)) || fd < 0)
 		return (-1);
 	while ((ret = read(fd, buff, BUF_SIZE)) > 0)
 	{
+		retprece = ret;
 		if (ret < 20 || ((*(tetri->tetri) = ft_check_one(buff, tetri)) == 0))
 			return (-1);
 		tetri->tetri++;
 		tetri->nb++;
+		if (ret == 20 && (ret = read(fd, buff, BUF_SIZE) != 0))
+			return (-1);
 	}
-	if (ret == -1)
+	if (ret < 0 || retprece == 21)
 		return (-1);
 	tetri->tetri -= tetri->nb;
 	ft_init_map(tetri);
