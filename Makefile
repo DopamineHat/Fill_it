@@ -36,9 +36,9 @@ $(NAME): $(OBJ)
 
 clean:
 	rm -rf $(OBJDIR)
+	rm Libft/*.o Libft/*.a
 
 fclean: clean
-	rm -rf $(NAME)
-	rm Libft/*.o Libft/*.a
+	rm $(NAME)
 
 re: fclean all
