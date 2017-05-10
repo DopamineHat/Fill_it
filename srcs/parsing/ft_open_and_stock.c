@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2017/05/08 06:52:12 by rolemass         ###   ########.fr       */
+/*   Updated: 2017/05/10 09:10:27 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int						ft_read_fd(int fd, t_tetri *tetri)
 		return (-1);
 	while ((ret = read(fd, buff, BUF_SIZE)) > 0)
 	{
-		if (ret < 20 || (*(tetri->tetri) = ft_check_one(buff, tetri)) == 0)
+		if (ret < 20 || ((*(tetri->tetri) = ft_check_one(buff, tetri)) == 0))
 			return (-1);
 		tetri->tetri++;
 		tetri->nb++;
