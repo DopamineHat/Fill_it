@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2017/05/10 09:10:27 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/05/10 09:46:28 by rpagot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,9 @@ static unsigned short	ft_check_one(char *buff, t_tetri *tetri)
 	i = 0;
 	while (buff[i])
 	{
-		if ((i + 1) % 5 == 0 && buff[i] != '\n')
+		if (((i + 1) % 5 == 0 && buff[i] != '\n')
+				|| ((i + 1) % 5 != 0 && i != 20
+				&& buff[i] != '.' && buff[i] != '#'))
 			return (0);
 		++i;
 	}
