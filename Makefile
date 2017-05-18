@@ -18,7 +18,7 @@ SRCDIR	= ./srcs/
 INCDIR	= ./includes/
 OBJDIR	= ./obj/
 
-all: obj libft $(NAME)
+all: obj  $(NAME)
 
 obj:
 	mkdir -p ./obj/ ./obj/algo/ ./obj/parsing/ ./obj/display/
@@ -28,18 +28,17 @@ $(OBJDIR)%.o:$(SRCDIR)%.c
 
 libft: $(LIBFT)
 
-$(LIBFT):
-	make -C ./Libft
-
 $(NAME): $(OBJ)
+	make -C ./Libft
 	$(CC) $(CFLAGS) $(LIBLINK) -o $(NAME) $(OBJ)
 
 clean:
 	rm -rf $(OBJDIR)
-	rm Libft/*.o Libft/*.a
+	make -C Libft/ clean
 
 fclean: clean
 	rm $(NAME)
+	make -C Libft/ fclean
 
 re: fclean all
 

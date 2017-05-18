@@ -6,7 +6,7 @@
 /*   By: rolemass <rolemass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:31:59 by rolemass          #+#    #+#             */
-/*   Updated: 2017/05/10 14:44:16 by rpagot           ###   ########.fr       */
+/*   Updated: 2017/05/18 20:48:16 by rolemass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static void				ft_init_map(t_tetri *tetri)
 	int n;
 
 	n = -1;
+	tetri->map_size = ft_sqrt(tetri->map_size - (tetri->area / 2));
 	if (!(tetri->map = (unsigned short *)malloc(16 * sizeof(unsigned short)))
 		|| !(tetri->pos = (short*)malloc(sizeof(short) * tetri->nb))
 		|| !(tetri->block = (t_block*)malloc(sizeof(t_block) * tetri->nb))
@@ -96,7 +97,6 @@ int						ft_read_fd(int fd, t_tetri *tetri)
 	if (ret < 0 || retprev == 21 || retprev == 0)
 		return (-1);
 	tetri->tetri -= tetri->nb;
-	tetri->map_size = ft_sqrt(tetri->map_size - (tetri->area / 2));
 	ft_init_map(tetri);
 	ft_memdel((void **)&buff);
 	ft_test_by_size(tetri);
