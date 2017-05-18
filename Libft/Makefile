@@ -3,7 +3,7 @@ FLAGS = -Wall -Werror -Wextra
 INCLUDES = -I ./includes
 SRC = ./srcs/*.c
 
-OBJ = *.o
+OBJ = $(SRC:.c=.o)
 
 $(NAME) :
 	gcc $(FLAGS) -c $(SRC) $(INCLUDES)
