@@ -86,7 +86,7 @@ $(NAME): obj $(addprefix ./obj/, $(FILES_OBJ))
 
 clean :
 	rm -f $(OBJ)
-
+	rm -rf $(OBJDIR)
 fclean : clean
 	rm -f $(NAME)
 
