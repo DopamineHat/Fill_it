@@ -72,10 +72,13 @@ ft_toupper.c
 
 all : $(NAME)
 
+obj:
+	mkdir -p ./obj/ ./obj/srcs/
+
 ./obj/%.o: ./srcs/%.c
 	gcc $(FLAGS) $(INCDIR) -o $@ -c $<
 
-$(NAME): $(addprefix ./obj/, $(FILES_OBJ))
+$(NAME): obj $(addprefix ./obj/, $(FILES_OBJ))
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
