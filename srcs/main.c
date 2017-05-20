@@ -20,7 +20,7 @@ int		main(int argc, char **argv)
 	tetri = ft_init_stuff();
 	if (argc != 2)
 	{
-		ft_putendl_fd("u wot m8", 2);
+		ft_putendl_fd("error", 2);
 		return (1);
 	}
 	if (ft_read_fd((fd = open(argv[1], O_RDONLY)), tetri) == -1)
