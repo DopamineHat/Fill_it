@@ -38,8 +38,8 @@ clean:
 	make -C Libft/ clean
 
 fclean: clean
-	rm $(NAME)
-	rm ./Libft/libft.a
+	rm -f $(NAME)
+	rm -f ./Libft/libft.a
 
 re: fclean all
 
