@@ -27,8 +27,6 @@ obj:
 $(OBJDIR)%.o:$(SRCDIR)%.c
 	$(CC) $(CFLAGS) $(LIBINC) -I $(INCDIR) -o $@ -c $<
 
-libft: $(LIBFT)
-
 $(NAME): obj $(OBJ)
 	make -C ./Libft
 	$(CC) $(CFLAGS) $(LIBLINK) -o $(NAME) $(OBJ)
