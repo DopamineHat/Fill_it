@@ -1,10 +1,24 @@
 NAME = fillit
 INCLUDES = -I ./includes
-SRC = main.c parsing/ft_open_and_stock.c parsing/ft_check_tetri.c \
-algo/resolve.c algo/ft_split_short.c \
-display/ft_final_display.c parsing/ft_init.c \
-algo/ft_count_bits.c algo/place_one.c
 
+SRC_ALGO =		ft_split_short.c	\
+				resolve.c			\
+				ft_count_bits.c		\
+				place_one.c
+
+SRC_PARSING =	ft_open_and_stock.c		\
+				ft_check_tetri.c		\
+				ft_init.c
+
+SRC_DISPLAY =	ft_final_display.c
+
+SRC_ALGO_PATH = $(addprefix algo/,$(SRC_ALGO))
+
+SRC_PARSING_PATH = $(addprefix parsing/,$(SRC_PARSING))
+
+SRC_DISPLAY_PATH = $(addprefix display/,$(SRC_DISPLAY))
+
+SRC = main.c $(SRC_ALGO_PATH) $(SRC_PARSING_PATH) $(SRC_DISPLAY_PATH)
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 
