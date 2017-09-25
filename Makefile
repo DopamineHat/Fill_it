@@ -23,7 +23,7 @@ SRC = main.c $(SRC_ALGO_PATH) $(SRC_PARSING_PATH) $(SRC_DISPLAY_PATH)
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 
 CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror -g
+CFLAGS	= -Wall -Wextra -Werror
 
 LIBFT	= ./Libft/libft.a
 LIBINC	= -I./Libft
